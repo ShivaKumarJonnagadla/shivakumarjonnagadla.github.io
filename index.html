@@ -159,9 +159,8 @@ img{max-width:100%;display:block}
 }
 .about-hl li{
   color:var(--mid);font-size:14px;padding:3px 0;
-  display:flex;align-items:flex-start;gap:8px;
+  line-height:1.7;
 }
-.about-hl li::before{content:'▸';color:var(--green);font-size:11px;flex-shrink:0;margin-top:3px}
 .about-hl em{color:var(--green);font-style:normal;font-weight:700}
 .contact-chips{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
 .contact-chip{
@@ -266,18 +265,21 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;gap:8px;
 }
 .exp-sub-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.exp-bullets{list-style:none;padding:0}
+.exp-bullets{list-style:none;padding:0;margin:0}
 .exp-bullets li{
-  display:flex;align-items:flex-start;gap:8px;
-  color:var(--mid);font-size:13px;margin-bottom:8px;line-height:1.7;
+  color:var(--mid);
+  font-size:13.5px;
+  line-height:1.8;
+  margin-bottom:10px;
+  padding-left:0;
 }
-.exp-bullets li::before{
-  content:'▸';color:var(--green);font-size:11px;
-  flex-shrink:0;margin-top:3px;
+.exp-bullets li strong{color:var(--dark);font-weight:600}
+.exp-bullets li .kw{
+  color:var(--green);
+  font-weight:700;
+  font-style:normal;
 }
-.exp-bullets li strong{color:var(--dark)}
-.exp-bullets li strong.kw{color:var(--green);font-weight:700}
-.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .exp-tag{
   background:var(--bg);color:var(--mid);font-size:11px;
   padding:3px 9px;border-radius:4px;border:1px solid var(--border);font-weight:600;
@@ -441,19 +443,20 @@ footer a{color:var(--green)}
           <strong>PTAG platform</strong> — IKEA's global system for managing physical and electronic price tags
           across thousands of stores worldwide.
         </p>
-          Transformational leader who works independently and across cross-functional teams — defining technical vision, building engineering roadmaps, and driving initiatives that advance organisational and product goals. 
-        <p>
-          Proven ability to design and modernise complex application environments — global microservices, ESL/DTAG digital shelf label systems, pricing architectures, event-driven integrations, and multi-cluster Kubernetes infrastructure.
         </p>
-        <p>
-          Deep hands-on expertise across Java Spring Boot, Elasticsearch, Cloudflare, Oracle PL/SQL, PostgreSQL, Kafka, GCP, Grafana, JMeter, Ghostscript, MSAL/SSO, OpenAPI 3.0, Helidon, and Neo4j — all applied in production at IKEA scale.
-        </p>
-        <p>
-          Works closely with stakeholders to understand and prioritise business goals, translating requirements into clear architecture, API contracts, and technical specifications.
-        </p>
-        <p>
-          Continuous learner who rapidly adopts emerging technologies — Gemini AI, Helidon, Neon Postgres, MCP servers — keeping the platform ahead of the technology curve.
-        </p>
+                Transformational leader who works independently and across cross-functional teams — defining technical vision, building engineering roadmaps, and driving initiatives that advance organisational and product goals.
+              <p>
+                Proven ability to design and modernise complex application environments — global microservices, ESL/DTAG digital shelf label systems, pricing architectures, event-driven integrations, and multi-cluster Kubernetes infrastructure.
+              </p>
+              <p>
+                Deep hands-on expertise across Java Spring Boot, Elasticsearch, Cloudflare, Oracle PL/SQL, PostgreSQL, Kafka, GCP, Grafana, JMeter, Ghostscript, MSAL/SSO, OpenAPI 3.0, Helidon, and Neo4j — all applied in production at IKEA scale.
+              </p>
+              <p>
+                Works closely with stakeholders to understand and prioritise business goals, translating requirements into clear architecture, API contracts, and technical specifications.
+              </p>
+              <p>
+                Continuous learner who rapidly adopts emerging technologies — Gemini AI, Helidon, Neon Postgres, MCP servers — keeping the platform ahead of the technology curve.
+              </p>
         <p>
           I designed the <strong>Catalogue Hub</strong> — a unified platform hub that acts as the single source
           of truth for all pricing and product data across the PTAG ecosystem, eliminating duplication across
@@ -468,12 +471,12 @@ footer a{color:var(--green)}
           invisible</strong>: it just works, scales, and costs less.
         </p>
         <ul class="about-hl">
-          <li>Designed ESL/DTAG pipeline using Ghostscript — 3,000+ hrs saved per store annually</li>
-          <li>Built QR Code solution guiding customers to correct landing pages — 100× cost reduction</li>
-          <li>Led Akamai → Cloudflare migration across 10 domains — zero downtime</li>
-          <li>Architected Catalogue Hub pricing platform — eliminated cross-team data duplication</li>
-          <li>Delivered MSAL / Azure AD SSO modernisation for PTAG mobile app</li>
-          <li>Set up and managed Oracle 19c, PostgreSQL &amp; Neon Postgres — full DBA ownership</li>
+          <li>Designed <em>ESL/DTAG pipeline</em> using Ghostscript — 3,000+ hrs saved per store annually</li>
+          <li>Built <em>QR Code solution</em> guiding customers to correct landing pages — 100× cost reduction</li>
+          <li>Led <em>Akamai → Cloudflare</em> migration across 10 domains — zero downtime</li>
+          <li>Architected <em>Catalogue Hub</em> pricing platform — eliminated cross-team data duplication</li>
+          <li>Delivered <em>MSAL / Azure AD SSO</em> modernisation for PTAG mobile app</li>
+          <li>Set up and managed <em>Oracle 19c, PostgreSQL &amp; Neon Postgres</em> — full DBA ownership</li>
         </ul>
         <div class="contact-chips">
           <a href="mailto:shivatsastra@gmail.com" class="contact-chip">
@@ -686,14 +689,14 @@ footer a{color:var(--green)}
           </p>
 
           <ul class="exp-bullets">
-            <li>Architected <strong class="kw">PTAG on GCP / GKE (Orbit/Anthos)</strong> — 11 clusters, 6 projects across EU, US &amp; Asia. Led <strong>OpenShift → GCP Orbit</strong> re-platforming: Helm, GitHub Actions CI/CD, RBAC, ManagedCertificate CRDs — zero customer downtime. Automated all infrastructure with <strong>Terraform</strong> across 6 GCP projects.</li>
-            <li>Designed <strong class="kw">ESL/DTAG rendering pipeline</strong> using <strong>Ghostscript</strong> — converting pricing data into digital shelf label images and pushing live updates to stores. Saved <strong>3,000+ labour hours per store annually</strong> and eliminated paper tag printing at scale. Architected Print Management layer for physical tag job queuing and printer communication.</li>
-            <li>Built <strong class="kw">QR Code solution</strong> enabling customers to scan shelf labels and land on the correct product page or promotion landing area — replaced licensed third-party service with a Python-built service at <strong>100× cost reduction</strong>.</li>
-            <li>Architected <strong class="kw">Catalogue Hub</strong> — unified platform hub and single source of truth for all PTAG pricing and product data. Eliminated cross-team data duplication, drove unified pricing architecture preventing multiple squads from redundant data maintenance, and defined <strong>OpenAPI 3.0</strong> contracts for all service boundaries.</li>
-            <li>Led <strong class="kw">Akamai → Cloudflare migration</strong> across <strong>10 domains</strong> — CDN, WAF, Workers, R2 storage, DNS — zero customer downtime, improved performance, significantly lower cost.</li>
-            <li>Delivered <strong class="kw">MSAL / Azure AD SSO</strong> modernisation for PTAG Cordova mobile app, replacing Auth0. Implemented signInSilent fallback, JWT clock-skew resolution, Android keystore debugging — enterprise-grade SSO on iOS &amp; Android.</li>
-            <li>Set up and managed <strong class="kw">Oracle 19c, PostgreSQL &amp; Neon Postgres</strong> — full DBA ownership. Oracle: LAG window functions, JSON aggregation, tablespace management. PostgreSQL: JSONB, LIST partitioning, Cloud SQL. Neon Postgres for serverless services.</li>
-            <li>Integrated <strong class="kw">Gemini AI with Elasticsearch</strong> for intelligent product search — first AI feature on PTAG. Built full observability: <strong>Grafana + Prometheus</strong>, OpenTelemetry, Confluent Kafka monitoring, Splunk HEC, Sentry. Led <strong>Spring Boot 2.5→3.3</strong>; initiated <strong>Helidon</strong>; built <strong>MCP servers</strong>. Mentored full team — cloud-native, Kubernetes, API design, RCA, JMeter.</li>
+            <li>▸&nbsp; Architected <em class="kw">PTAG on GCP / GKE (Orbit/Anthos)</em> — 11 clusters, 6 projects across EU, US &amp; Asia. Led <strong>OpenShift → GCP Orbit</strong> re-platforming: Helm, GitHub Actions CI/CD, RBAC, ManagedCertificate CRDs — zero customer downtime. Automated all infrastructure with <strong>Terraform</strong> across 6 GCP projects.</li>
+            <li>▸&nbsp; Designed <em class="kw">ESL/DTAG rendering pipeline</em> using <strong>Ghostscript</strong> — converting pricing data into digital shelf label images and pushing live updates to stores. Saved <strong>3,000+ labour hours per store annually</strong> and eliminated paper tag printing at scale. Architected Print Management layer for physical tag job queuing and printer communication.</li>
+            <li>▸&nbsp; Built <em class="kw">QR Code solution</em> enabling customers to scan shelf labels and land on the correct product page or promotion landing area — replaced licensed third-party service with a Python-built service at <strong>100× cost reduction</strong>.</li>
+            <li>▸&nbsp; Architected <em class="kw">Catalogue Hub</em> — unified platform hub and single source of truth for all PTAG pricing and product data. Eliminated cross-team data duplication, drove unified pricing architecture preventing multiple squads from redundant data maintenance, and defined <strong>OpenAPI 3.0</strong> contracts for all service boundaries.</li>
+            <li>▸&nbsp; Led <em class="kw">Akamai → Cloudflare migration</em> across <strong>10 domains</strong> — CDN, WAF, Workers, R2 storage, DNS — zero customer downtime, improved performance, significantly lower cost.</li>
+            <li>▸&nbsp; Delivered <em class="kw">MSAL / Azure AD SSO</em> modernisation for PTAG Cordova mobile app, replacing Auth0. Implemented signInSilent fallback, JWT clock-skew resolution, Android keystore debugging — enterprise-grade SSO on iOS &amp; Android.</li>
+            <li>▸&nbsp; Set up and managed <em class="kw">Oracle 19c, PostgreSQL &amp; Neon Postgres</em> — full DBA ownership. Oracle: LAG window functions, JSON aggregation, tablespace management. PostgreSQL: JSONB, LIST partitioning, Cloud SQL. Neon Postgres for serverless services.</li>
+            <li>▸&nbsp; Integrated <em class="kw">Gemini AI with Elasticsearch</em> for intelligent product search — first AI feature on PTAG. Built full observability: <strong>Grafana + Prometheus</strong>, OpenTelemetry, Confluent Kafka monitoring, Splunk HEC, Sentry. Led <strong>Spring Boot 2.5→3.3</strong>; initiated <strong>Helidon</strong>; built <strong>MCP servers</strong>. Mentored full team — cloud-native, Kubernetes, API design, RCA, JMeter.</li>
           </ul>
 
           <div class="exp-tags">
@@ -720,9 +723,9 @@ footer a{color:var(--green)}
           </div>
           <div class="exp-company">Tata Consultancy Services · Älmhult, Sweden</div>
           <ul class="exp-bullets" style="margin-top:12px">
-            <li>Developed and maintained core modules of a mission-critical enterprise system, measurably improving reliability and throughput across concurrent projects.</li>
-            <li>Mentored junior engineers through structured code reviews and pair programming, raising team quality standards and on-time delivery rate.</li>
-            <li>Collaborated with cross-functional teams to design and implement software solutions aligned with project requirements and engineering best practices.</li>
+            <li>▸&nbsp; Developed and maintained core modules of a mission-critical enterprise system, measurably improving reliability and throughput across concurrent projects.</li>
+            <li>▸&nbsp; Mentored junior engineers through structured code reviews and pair programming, raising team quality standards and on-time delivery rate.</li>
+            <li>▸&nbsp; Collaborated with cross-functional teams to design and implement software solutions aligned with project requirements and engineering best practices.</li>
           </ul>
           <div class="exp-tags"><span class="exp-tag">Java</span><span class="exp-tag">Spring Boot</span><span class="exp-tag">Oracle</span><span class="exp-tag">REST APIs</span><span class="exp-tag">Mentoring</span></div>
         </div>
@@ -737,9 +740,9 @@ footer a{color:var(--green)}
           </div>
           <div class="exp-company">Tata Consultancy Services · Älmhult, Sweden</div>
           <ul class="exp-bullets" style="margin-top:12px">
-            <li>Led a development team through the full SDLC — requirements through production — ensuring on-time, quality delivery across all project phases.</li>
-            <li>Served as primary technical point of contact for clients; translated complex business requirements into precise technical specifications and deliverables.</li>
-            <li>Conducted regular code reviews, identified improvement areas, and implemented strategies for long-term maintainability and scalability.</li>
+            <li>▸&nbsp; Led a development team through the full SDLC — requirements through production — ensuring on-time, quality delivery across all project phases.</li>
+            <li>▸&nbsp; Served as primary technical point of contact for clients; translated complex business requirements into precise technical specifications and deliverables.</li>
+            <li>▸&nbsp; Conducted regular code reviews, identified improvement areas, and implemented strategies for long-term maintainability and scalability.</li>
           </ul>
           <div class="exp-tags"><span class="exp-tag">Tech Lead</span><span class="exp-tag">Full SDLC</span><span class="exp-tag">Stakeholder Management</span><span class="exp-tag">Team Leadership</span></div>
         </div>
@@ -754,8 +757,8 @@ footer a{color:var(--green)}
           </div>
           <div class="exp-company">Tata Consultancy Services · Chennai, India</div>
           <ul class="exp-bullets" style="margin-top:12px">
-            <li>Progressed from junior to senior developer over 6 years, building product features (replenishment reporting, quantity availability) using Informix 4GL, PL/SQL, Oracle, and Shell scripting.</li>
-            <li>Created automated Shell alerting scripts reducing manual monitoring effort; resolved production incidents within SLA consistently.</li>
+            <li>▸&nbsp; Progressed from junior to senior developer over 6 years, building product features (replenishment reporting, quantity availability) using Informix 4GL, PL/SQL, Oracle, and Shell scripting.</li>
+            <li>▸&nbsp; Created automated Shell alerting scripts reducing manual monitoring effort; resolved production incidents within SLA consistently.</li>
           </ul>
           <div class="exp-tags"><span class="exp-tag">Informix 4GL</span><span class="exp-tag">PL/SQL</span><span class="exp-tag">Oracle</span><span class="exp-tag">Shell Scripting</span></div>
         </div>
