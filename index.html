@@ -268,11 +268,15 @@ img{max-width:100%;display:block}
 .exp-sub-label::after{content:'';flex:1;height:1px;background:var(--border)}
 .exp-bullets{list-style:none;padding:0}
 .exp-bullets li{
-  position:relative;padding-left:18px;color:var(--mid);
-  font-size:13px;margin-bottom:6px;line-height:1.65;
+  display:flex;align-items:flex-start;gap:8px;
+  color:var(--mid);font-size:13px;margin-bottom:8px;line-height:1.7;
 }
-.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:11px;top:4px}
+.exp-bullets li::before{
+  content:'▸';color:var(--green);font-size:11px;
+  flex-shrink:0;margin-top:3px;
+}
 .exp-bullets li strong{color:var(--dark)}
+.exp-bullets li strong.kw{color:var(--green);font-weight:700}
 .exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .exp-tag{
   background:var(--bg);color:var(--mid);font-size:11px;
@@ -451,12 +455,12 @@ footer a{color:var(--green)}
           invisible</strong>: it just works, scales, and costs less.
         </p>
         <ul class="about-hl">
-          <li>Designed <em>ESL/DTAG pipeline</em> using Ghostscript — 3,000+ hrs saved per store annually</li>
-          <li>Built <em>QR Code solution</em> guiding customers to correct landing pages — 100× cost reduction</li>
-          <li>Led <em>Akamai → Cloudflare</em> migration across 10 domains — zero downtime</li>
-          <li>Architected <em>Catalogue Hub</em> pricing platform — eliminated cross-team data duplication</li>
-          <li>Delivered <em>MSAL / Azure AD SSO</em> modernisation for PTAG mobile app</li>
-          <li>Set up and managed <em>Oracle 19c, PostgreSQL &amp; Neon Postgres</em> — full DBA ownership</li>
+          <li>Designed ESL/DTAG pipeline using Ghostscript — 3,000+ hrs saved per store annually</li>
+          <li>Built QR Code solution guiding customers to correct landing pages — 100× cost reduction</li>
+          <li>Led Akamai → Cloudflare migration across 10 domains — zero downtime</li>
+          <li>Architected Catalogue Hub pricing platform — eliminated cross-team data duplication</li>
+          <li>Delivered MSAL / Azure AD SSO modernisation for PTAG mobile app</li>
+          <li>Set up and managed Oracle 19c, PostgreSQL &amp; Neon Postgres — full DBA ownership</li>
         </ul>
         <div class="contact-chips">
           <a href="mailto:shivatsastra@gmail.com" class="contact-chip">
@@ -467,9 +471,13 @@ footer a{color:var(--green)}
             <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
             +46 721 300 149
           </a>
-          <a href="https://linkedin.com" target="_blank" class="contact-chip">
+          <a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" class="contact-chip">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
+            linkedin.com/in/shiva-kumar-j-271551121
+          </a>
+          <a href="https://shivakumarjonnagadla.github.io" target="_blank" class="contact-chip">
+            <svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.7 1.6.2 2.7.1 3 .8.9 1.2 2 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 0z"/></svg>
+            shivakumarjonnagadla.github.io
           </a>
         </div>
       </div>
@@ -664,49 +672,15 @@ footer a{color:var(--green)}
             Sole architect of the PTAG platform — IKEA's global system managing millions of physical and digital price tag updates across all stores worldwide. Running on GCP with 11 GKE clusters across EU, US, and Asia.
           </p>
 
-          <div class="exp-sub-label">Platform Architecture &amp; Cloud Infrastructure</div>
           <ul class="exp-bullets">
-            <li>Architected the <strong>PTAG global platform</strong> on GCP / GKE (Orbit/Anthos) — 11 clusters, 6 projects, 3 regions — serving millions of real-time price tag updates with 24/7 global availability.</li>
-            <li>Executed full <strong>OpenShift → GCP Orbit re-platforming</strong>: migrated all Helm charts, GitHub Actions CI/CD pipelines, RBAC, ManagedCertificate CRDs, and container security hardening across all teams with zero customer downtime.</li>
-            <li>Automated GCP infrastructure across 6 projects using <strong>Terraform</strong>: Artifact Registry, Workload Identity Federation, Cloud DNS, Cloud SQL, Cloud Run, and GKE node pool configuration.</li>
-          </ul>
-
-          <div class="exp-sub-label">ESL / DTAG &amp; Print Management</div>
-          <ul class="exp-bullets">
-            <li>Designed the complete <strong>ESL/DTAG rendering pipeline</strong> using <strong>Ghostscript</strong> for image transformation — converting product/pricing data into tag images and pushing live updates to electronic shelf labels, saving <strong>3,000+ labour hours per store annually</strong>.</li>
-            <li>Architected the <strong>Print Management</strong> integration layer governing how physical tag printing is orchestrated across stores — managing template rendering, job queuing, and printer communication.</li>
-          </ul>
-
-          <div class="exp-sub-label">Catalogue Hub &amp; Pricing Architecture</div>
-          <ul class="exp-bullets">
-            <li>Built the <strong>Catalogue Hub</strong> — a common platform hub acting as the single source of truth for all PTAG product and pricing data, eliminating duplication across multiple engineering teams and standardising data contracts for Print Management, ESL systems, and downstream consumers.</li>
-            <li>Drove the <strong>unified pricing architecture</strong> that prevented multiple squads from independently maintaining the same pricing information — significantly reducing reconciliation overhead, data inconsistency incidents, and integration complexity across teams.</li>
-            <li>Defined <strong>OpenAPI 3.0 / Swagger specifications</strong> for the Catalogue Hub and Transmitter API, formalising how all services communicate with clear versioned contracts.</li>
-          </ul>
-
-          <div class="exp-sub-label">CDN Migration &amp; QR Code Innovation</div>
-          <ul class="exp-bullets">
-            <li>Led <strong>Akamai → Cloudflare migration</strong> across 10 domains: CDN, WAF, Workers, R2 storage, DNS, and DDoS protection — delivering better performance, lower cost, and zero customer-facing downtime.</li>
-            <li>Engineered the <strong>QR Code solution</strong> enabling customers to scan price tags and land on the exact correct product page or promotion landing area — replacing a licensed third-party service with a Python-built service at <strong>100× cost reduction</strong>.</li>
-          </ul>
-
-          <div class="exp-sub-label">Mobile &amp; Authentication Modernisation</div>
-          <ul class="exp-bullets">
-            <li>Modernised <strong>PTAG Cordova mobile app</strong> authentication from Auth0 to <strong>Microsoft MSAL / Azure AD SSO</strong>: implemented signInSilent → signInInteractive fallback, JWT clock-skew resolution, and Android keystore signature hash debugging.</li>
-          </ul>
-
-          <div class="exp-sub-label">Database Ownership (Full DBA)</div>
-          <ul class="exp-bullets">
-            <li>Full DBA ownership of <strong>Oracle 19c</strong>: schema design, LAG window functions for price reconciliation, JSON aggregation with RETURNING CLOB, tablespace management, and production incident resolution.</li>
-            <li>Full DBA for <strong>PostgreSQL</strong>: JSONB payload design, LIST partitioning on class_unit_code, schema migration, connection pooling. Set up and managed <strong>Neon Postgres</strong> (serverless) for lightweight services.</li>
-          </ul>
-
-          <div class="exp-sub-label">AI, Observability &amp; Team Leadership</div>
-          <ul class="exp-bullets">
-            <li>Integrated <strong>Gemini AI with Elasticsearch</strong> delivering intelligent product search — first AI-augmented capability on the PTAG platform; established AI integration pattern for future features.</li>
-            <li>Built full observability: <strong>Grafana + Prometheus</strong>, OpenTelemetry (OTLP), Confluent Kafka lag monitoring, Splunk HEC centralised logging, Sentry error tracking.</li>
-            <li>Created <strong>MCP servers</strong> within the IKEA developer framework; led <strong>Spring Boot 2.5 → 3.3</strong> migration; initiated <strong>Helidon framework</strong> adoption for lightweight microservices.</li>
-            <li><strong>Mentored and upskilled</strong> the full engineering team through structured workshops: cloud-native architecture, Kubernetes operations, API design, RCA methodology, performance testing.</li>
+            <li>Architected <strong class="kw">PTAG on GCP / GKE (Orbit/Anthos)</strong> — 11 clusters, 6 projects across EU, US &amp; Asia. Led <strong>OpenShift → GCP Orbit</strong> re-platforming: Helm, GitHub Actions CI/CD, RBAC, ManagedCertificate CRDs — zero customer downtime. Automated all infrastructure with <strong>Terraform</strong> across 6 GCP projects.</li>
+            <li>Designed <strong class="kw">ESL/DTAG rendering pipeline</strong> using <strong>Ghostscript</strong> — converting pricing data into digital shelf label images and pushing live updates to stores. Saved <strong>3,000+ labour hours per store annually</strong> and eliminated paper tag printing at scale. Architected Print Management layer for physical tag job queuing and printer communication.</li>
+            <li>Built <strong class="kw">QR Code solution</strong> enabling customers to scan shelf labels and land on the correct product page or promotion landing area — replaced licensed third-party service with a Python-built service at <strong>100× cost reduction</strong>.</li>
+            <li>Architected <strong class="kw">Catalogue Hub</strong> — unified platform hub and single source of truth for all PTAG pricing and product data. Eliminated cross-team data duplication, drove unified pricing architecture preventing multiple squads from redundant data maintenance, and defined <strong>OpenAPI 3.0</strong> contracts for all service boundaries.</li>
+            <li>Led <strong class="kw">Akamai → Cloudflare migration</strong> across <strong>10 domains</strong> — CDN, WAF, Workers, R2 storage, DNS — zero customer downtime, improved performance, significantly lower cost.</li>
+            <li>Delivered <strong class="kw">MSAL / Azure AD SSO</strong> modernisation for PTAG Cordova mobile app, replacing Auth0. Implemented signInSilent fallback, JWT clock-skew resolution, Android keystore debugging — enterprise-grade SSO on iOS &amp; Android.</li>
+            <li>Set up and managed <strong class="kw">Oracle 19c, PostgreSQL &amp; Neon Postgres</strong> — full DBA ownership. Oracle: LAG window functions, JSON aggregation, tablespace management. PostgreSQL: JSONB, LIST partitioning, Cloud SQL. Neon Postgres for serverless services.</li>
+            <li>Integrated <strong class="kw">Gemini AI with Elasticsearch</strong> for intelligent product search — first AI feature on PTAG. Built full observability: <strong>Grafana + Prometheus</strong>, OpenTelemetry, Confluent Kafka monitoring, Splunk HEC, Sentry. Led <strong>Spring Boot 2.5→3.3</strong>; initiated <strong>Helidon</strong>; built <strong>MCP servers</strong>. Mentored full team — cloud-native, Kubernetes, API design, RCA, JMeter.</li>
           </ul>
 
           <div class="exp-tags">
