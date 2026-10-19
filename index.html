@@ -127,11 +127,57 @@ h1{font-size:clamp(40px,6.6vw,78px);margin-bottom:18px}
 @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.avatar{width:160px;height:160px}}
 
 /* marquee */
-.marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--bg2);padding:18px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;gap:44px;width:max-content;animation:scroll 42s linear infinite}
-.marquee:hover .track{animation-play-state:paused}
-.track span{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--tx3);white-space:nowrap;display:flex;align-items:center;gap:44px}
-.track span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue)}
+/* gcp, engineering, bento */
+.gstats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:34px}
+.gstats .stat{text-align:center;padding:22px}
+.gstats .stat strong{font-size:42px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:760px){.gstats{grid-template-columns:repeat(2,1fr)}}
+.stack{display:grid;gap:12px;margin-bottom:52px}
+.layer{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:center;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--card);position:relative;transition:transform .4s,border-color .3s,box-shadow .3s}
+.layer::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:4px;background:var(--lc)}
+.layer:hover{border-color:var(--lc);box-shadow:var(--shadow);z-index:3}
+.layer h4{font-size:16px}.layer h4 small{display:block;font:400 11.5px 'JetBrains Mono',monospace;color:var(--tx3);margin-top:2px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px}
+.tile{padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;border:1px solid var(--line);background:var(--bg2);position:relative;transition:transform .25s,border-color .25s,background .25s;cursor:default}
+.tile:hover,.tile:focus{transform:translateY(-3px);border-color:var(--lc);background:color-mix(in srgb,var(--lc) 14%,var(--bg2));outline:none}
+.tile::after{content:attr(data-d);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,6px);width:max-content;max-width:240px;white-space:normal;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:400;line-height:1.4;background:var(--tx);color:var(--bg);opacity:0;pointer-events:none;transition:all .2s;z-index:5}
+.tile:hover::after,.tile:focus::after{opacity:1;transform:translate(-50%,0)}
+.layer.reveal:nth-child(odd){transform:translateX(-36px)}.layer.reveal:nth-child(even){transform:translateX(36px)}
+.layer.reveal.in{transform:none}
+@media(max-width:760px){.layer{grid-template-columns:1fr}.layer.reveal:nth-child(odd),.layer.reveal:nth-child(even){transform:translateY(24px)}.layer.reveal.in{transform:none}}
+.sub-h{font-size:clamp(20px,2.6vw,26px);margin-bottom:20px}
+.pca-card .no{font:500 11px 'JetBrains Mono',monospace;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.pca-card h4{font-size:17px;margin-bottom:8px}
+.pca-card p{color:var(--tx2);font-size:14px}
+.eng{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
+@media(max-width:960px){.eng{grid-template-columns:1fr}}
+.codewin{padding:0;background:#0d1326;border-color:rgba(255,255,255,.1);color:#d7def0}
+.cw-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:12px;color:#8f9bbd}
+.cw-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.cw-bar i:nth-child(2){background:#febc2e}.cw-bar i:nth-child(3){background:#28c840;margin-right:8px}
+.cw-bar em{margin-left:auto;font-style:normal;color:#6f7b99;font-size:11px}
+.codewin pre{padding:18px 20px;font-size:12.5px;line-height:1.75;overflow-x:auto;min-height:330px;white-space:pre}
+.codewin .ln{display:block;opacity:0;transform:translateX(-8px);transition:opacity .35s,transform .35s}
+.codewin .ln.on{opacity:1;transform:none}
+.k1{color:#c792ea}.k2{color:#7fdbca}.k3{color:#ffcb6b}.k4{color:#82aaff}.k5{color:#6f7b99;font-style:italic}
+.pipe{display:grid;align-content:space-between;position:relative;padding-left:30px}
+.pipe::before{content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.pipe::after{content:"";position:absolute;left:9px;top:14px;width:6px;height:36px;border-radius:6px;background:var(--grad);animation:flow 3.4s ease-in-out infinite}
+@keyframes flow{0%{top:14px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:calc(100% - 50px);opacity:0}}
+.st{position:relative;padding:10px 0}
+.st::before{content:"";position:absolute;left:-25px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--blue)}
+.st h4{font-size:16px;margin-bottom:2px}.st p{font-size:13.5px;color:var(--tx2)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.bento .card{padding:22px}
+.bento h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.bento h3 i{font-style:normal;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:rgba(76,141,255,.15);font-size:16px}
+.bchips{display:flex;flex-wrap:wrap;gap:7px}
+.bchips span{font-size:12.5px;padding:5px 11px;border-radius:9px;border:1px solid var(--line);background:var(--bg2);transition:transform .2s,border-color .2s}
+.bchips span:hover{transform:translateY(-3px);border-color:var(--blue)}
+.bchips span.p{border-color:rgba(47,209,139,.4);background:rgba(47,209,139,.08)}
+.bchips em{font-style:normal;font-size:10px;color:var(--tx3);margin-left:6px;font-family:'JetBrains Mono',monospace}
+.bento .feat{background:linear-gradient(150deg,rgba(76,141,255,.16),rgba(47,209,139,.08),var(--card))}
+@media(max-width:960px){.bento>*{grid-column:span 6!important}}
+@media(max-width:640px){.bento>*{grid-column:span 12!important}}
 
 /* about */
 .about{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:start}
@@ -355,7 +401,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 }
 @media print{
   :root{--bg:#fff;--bg2:#fff;--card:#fff;--tx:#000;--tx2:#222;--tx3:#555;--line:#ccc;--nav:#fff}
-  nav,#progress,#glow,#net,.cue,.marquee,.icon-btn,.btns,#totop{display:none!important}
+  nav,#progress,#glow,#net,.cue,.icon-btn,.btns,#totop{display:none!important}
   .reveal{opacity:1!important;transform:none!important}
   section{padding:24px 0;break-inside:avoid}#home{min-height:0}
   .card{box-shadow:none;break-inside:avoid}.grad{color:#000;background:none}
@@ -374,6 +420,8 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
     <li><a href="#lenses">Profile</a></li>
     <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#gcp">GCP</a></li>
+    <li><a href="#engineering">Engineering</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#credentials">Education</a></li>
@@ -416,7 +464,6 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
   <a href="#about" class="cue" aria-label="Scroll to About"><i></i></a>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -488,7 +535,8 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
   <div class="wrap">
     <div class="eyebrow reveal">Reference architecture</div>
     <h2 class="title reveal">The platform, <span class="grad">end to end</span></h2>
-    <p class="lead reveal">An interactive view of the architecture style I design and operate. Select any component to see the thinking behind it. Data flows in real time along the animated paths.</p>
+    <p class="lead reveal">Three views of the same platform: logical, deployment and security. Switch views, then select any component to see the thinking behind it. Data flows along the animated paths.</p>
+    <div class="tabs reveal" id="vtabs" role="tablist"></div>
     <div class="arch reveal">
       <div class="card diagram" style="padding:14px">
         <svg class="map" id="map" viewBox="0 0 1000 500" role="img" aria-label="Reference architecture diagram showing edge, platform, data, analytics and AI layers"></svg>
@@ -500,6 +548,42 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
         <div class="legend"><span class="tag">REST and SOAP</span><span class="tag">Kafka and Pub/Sub</span><span class="tag">OpenAPI 3.0</span></div>
       </div>
     </div>
+  <div class="grid3" id="princ" style="margin-top:26px"></div>
+  </div>
+</section>
+
+<!-- GCP -->
+<section id="gcp">
+  <div class="wrap">
+    <div class="eyebrow reveal">Google Cloud platform</div>
+    <h2 class="title reveal">Designed, built and run <span class="grad">on Google Cloud</span></h2>
+    <p class="lead reveal">As a Google Cloud Certified Professional Cloud Architect and the architect of a global GCP platform, I own the whole stack from landing zone to workload, all of it as code.</p>
+    <div class="gstats">
+      <div class="stat reveal"><strong data-count="11">0</strong><span>GKE / Anthos clusters</span></div>
+      <div class="stat reveal" style="--d:.06s"><strong data-count="6">0</strong><span>GCP projects</span></div>
+      <div class="stat reveal" style="--d:.12s"><strong data-count="3">0</strong><span>regions: EU, US and Asia</span></div>
+      <div class="stat reveal" style="--d:.18s"><strong data-count="0">0</strong><span>downtime during the OpenShift migration</span></div>
+    </div>
+    <div class="stack" id="stack"></div>
+    <h3 class="sub-h reveal">The Professional Cloud Architect exam domains, mapped to real work</h3>
+    <div class="grid3" id="pca"></div>
+  </div>
+</section>
+
+<!-- ENGINEERING -->
+<section id="engineering" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Hands-on engineering</div>
+    <h2 class="title reveal">An architect who <span class="grad">still ships code</span></h2>
+    <p class="lead reveal">I own 20+ Java Spring Boot microservices and the middleware behind the front end. I write, review and merge production code every day, so every architecture decision is tested against the real codebase.</p>
+    <div class="eng">
+      <div class="card codewin reveal">
+        <div class="cw-bar"><i></i><i></i><i></i><span class="mono">PriceUpdateConsumer.java</span><em class="mono">illustrative pattern</em></div>
+        <pre class="mono" id="code" aria-label="Illustrative Java Kafka idempotent consumer with dead-letter routing"></pre>
+      </div>
+      <div class="pipe reveal" id="pipe"></div>
+    </div>
+    <div class="grid3" id="engcards" style="margin-top:22px"></div>
   </div>
 </section>
 
@@ -518,9 +602,8 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
   <div class="wrap">
     <div class="eyebrow reveal">Toolbox</div>
     <h2 class="title reveal">Technology I <span class="grad">design with</span></h2>
-    <p class="lead reveal">Choose a domain. Tools marked with a green tag are the ones I run in production at scale.</p>
-    <div class="tabs reveal" id="tabs" role="tablist"></div>
-    <div class="chips" id="chips"></div>
+    <p class="lead reveal">Everything at a glance, no scrolling or clicking. Tools with a green outline are the ones I run in production at scale.</p>
+    <div class="bento" id="bento"></div>
   </div>
 </section>
 
@@ -546,7 +629,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 </section>
 
 <!-- LEADERSHIP -->
-<section id="leadership" class="alt">
+<section id="leadership">
   <div class="wrap">
     <div class="eyebrow reveal">Leadership</div>
     <h2 class="title reveal">How I <span class="grad">lead from inside the code</span></h2>
@@ -556,7 +639,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="alt">
   <div class="wrap">
     <div class="eyebrow reveal">Experience</div>
     <h2 class="title reveal">A career built <span class="grad">from the code up</span></h2>
@@ -566,7 +649,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 </section>
 
 <!-- CREDENTIALS -->
-<section id="credentials" class="alt">
+<section id="credentials">
   <div class="wrap">
     <div class="eyebrow reveal">Credentials</div>
     <h2 class="title reveal">Certified and <span class="grad">continuously learning</span></h2>
@@ -581,7 +664,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
+<section id="contact" class="alt contact">
   <div class="wrap">
     <div class="eyebrow reveal" style="justify-content:center">Contact</div>
     <h2 class="title reveal">Let us design something <span class="grad">that lasts</span></h2>
@@ -596,7 +679,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
 </section>
 <footer>
   <div class="fgrid">
-    <div><h5>Navigation</h5><a href="#about">About</a><a href="#lenses">Profile</a><a href="#capabilities">Capabilities</a><a href="#architecture">Architecture</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#credentials">Education</a></div>
+    <div><h5>Navigation</h5><a href="#about">About</a><a href="#lenses">Profile</a><a href="#capabilities">Capabilities</a><a href="#architecture">Architecture</a><a href="#gcp">Google Cloud</a><a href="#engineering">Engineering</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#credentials">Education</a></div>
     <div><h5>More</h5><a href="#decisions">Decision records</a><a href="#nfr">Quality attributes</a><a href="#approach">Way of working</a><a href="#leadership">Leadership</a></div>
     <div><h5>Contact me</h5><a href="mailto:shivatsastra@gmail.com">shivatsastra@gmail.com</a><a href="tel:+46721300149">+46 721 300 149</a><a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
@@ -750,12 +833,67 @@ var LEAD=[
  ['🧗','The hard problems','Be the person colleagues come to when something is genuinely difficult, and get into the code with them.'],
  ['🤝','Honest about range','Deepest in backend and architecture. Comfortable across the stack with React, and glad to deepen it further.']
 ];
-var MARQUEE=['Solution Architecture','Enterprise Architecture','Microservices','SOA','Event-Driven Design','Tech Leadership','Google Cloud','Kubernetes','Anthos','Terraform','Spring Boot','Java 21','Kafka','Pub/Sub','Elasticsearch','BigQuery','OpenAPI 3.0','OAuth2 / OIDC','Cloudflare','Grafana','OpenTelemetry','MCP','Vertex AI','SAFe'];
 var ROLES=['Solution Architect and Tech Lead','Google Cloud Certified Professional Cloud Architect','Hands-on Java and Spring Boot engineer','Event-driven systems, platforms and AI-native delivery'];
+
+
+var STACK=[
+ ['Foundation','landing zone and guardrails','#4c8dff',[['GCP projects (6)','Separate projects across environments and regions, all provisioned as code.'],['VPC and networking','Network design and firewall policies, defined in Terraform.'],['IAM and RBAC','Least-privilege access for people, pipelines and services.'],['VPC Service Controls','A service perimeter that limits data exfiltration paths.'],['Cloud Armor','WAF and DDoS protection in front of public workloads.']]],
+ ['Compute','containers first','#2fd18b',[['GKE / Anthos (11 clusters)','Re-platformed from OpenShift across EU, US and Asia with zero downtime.'],['Helm','Safe, repeatable deployments with rollout and rollback.'],['Cloud Run','Serverless right-sizing for spiky or small workloads.'],['Spring Boot 3.3 services','20+ microservices modernised from 2.5 to 3.3.']]],
+ ['Data','operational and analytical','#ffc53d',[['Cloud SQL (PostgreSQL)','Operational data, including a 130GB table partitioned online.'],['BigQuery','Analytical layer fed by events, shared by common teams.'],['Pub/Sub','Event backbone alongside Kafka for decoupled integration.'],['Elasticsearch','Search and aggregation tuned for relevance and speed.'],['Redis','Low-latency caching and access.']]],
+ ['AI','Google AI in the platform','#9b7bff',[['Vertex AI','AI-augmented engineering and platform capabilities.'],['Gemini','Intelligent product search with Elasticsearch.'],['MCP framework','Reusable context for AI tooling, with a React interface.']]],
+ ['Delivery','everything as code','#ff6b6b',[['Terraform','All GCP projects, networking and firewall policies as code.'],['GitHub Actions','CI/CD pipelines with quality gates.'],['SonarQube + CodeQL','Automated quality and security checks on every change.'],['Contract-first OpenAPI','API review before code is written.']]],
+ ['Operations','observable by default','#4c8dff',[['Prometheus','Metrics collection and alerting.'],['Grafana','Reusable dashboards adopted across teams.'],['OpenTelemetry','Distributed tracing across services.'],['Looker Studio / Superset','ROI and service-health reporting.'],['Root-cause analysis','Days to minutes time-to-detect for a class of silent failures.']]]
+];
+var PCA=[
+ ['Domain 1','Designing and planning a cloud solution architecture','Reference architectures, decision records and build-versus-buy choices across the platform, with cost and compliance weighed in every design.'],
+ ['Domain 2','Managing and provisioning the infrastructure','Terraform for projects, networking and firewall policies, with Helm-based rollouts across 11 clusters in 6 projects.'],
+ ['Domain 3','Designing for security and compliance','OAuth2, OIDC, JWT, RBAC, VPC Service Controls and Cloud Armor, with GDPR and PCI-DSS awareness in design reviews.'],
+ ['Domain 4','Analyzing and optimizing processes','Cost optimisation through architecture: an in-house service at 100x lower cost and a pipeline saving 3,000+ labour hours per store each year.'],
+ ['Domain 5','Managing implementation','Hands-on code review, quality gates and mentoring so the agreed architecture is what actually ships.'],
+ ['Domain 6','Ensuring solution and operations reliability','Observability, root-cause analysis and zero-downtime migrations that took silent-failure detection from days to minutes.']
+];
+var PRINC=[
+ ['Design for the integration reality','More than 80% of platform data arrives through integrations, so contracts, schemas and failure handling come first.'],
+ ['Decouple with events','Kafka and Pub/Sub let producers and consumers evolve independently and absorb spikes.'],
+ ['Everything as code','Infrastructure, pipelines and policy live in Git, which makes change reviewable and rollback routine.'],
+ ['Make failure visible','Dead-letter routing, produced-versus-consumed monitoring and tracing turn silent failures into alerts.'],
+ ['Prove before you commit','End-to-end PoCs de-risk new technology before it becomes platform.'],
+ ['Pay only for value','Right-size, build in-house where it wins, and review cost as a design input.']
+];
+var ENGSTEPS=[
+ ['Write','Java 17/21 and Spring Boot 3.3 with Spring Security, JPA and Hibernate. Clean, testable code with unit and integration tests.'],
+ ['Review','Hands-on pull-request reviews and approvals, with contract-first OpenAPI review before implementation.'],
+ ['Gate','SonarQube and CodeQL quality gates block regressions and vulnerabilities in the pipeline.'],
+ ['Ship','GitHub Actions, Helm and Terraform deliver zero-downtime rollouts with safe rollback.'],
+ ['Observe','Prometheus, Grafana and OpenTelemetry make behaviour visible. Root-cause analysis fixes the class of problem.'],
+ ['Augment','Claude Code, Copilot, Vertex AI and MCP servers are embedded in the developer framework.']
+];
+var ENGCARDS=[
+ ['🧱','20+ microservices','Owned end to end, from API contract to production, with the middleware that powers the front end.'],
+ ['🧪','Testing mindset','Unit and integration tests, TDD within CI, and permanent fixes for the hardest production issues.'],
+ ['🗃','Data engineering','PostgreSQL modelling, list partitioning, keyset-pagination backfills and Elasticsearch tuning.']
+];
+var CODE=[
+ '<span class="k5">// Illustrative pattern: idempotent consumer with dead-letter routing</span>',
+ '<span class="k3">@KafkaListener</span>(topics = <span class="k2">"pricing.updated"</span>, groupId = <span class="k2">"range-sync"</span>)',
+ '<span class="k1">public void</span> <span class="k4">onMessage</span>(PriceUpdated evt, Acknowledgment ack) {',
+ '  <span class="k1">if</span> (processed.<span class="k4">exists</span>(evt.<span class="k4">id</span>())) {      <span class="k5">// already handled, safe to skip</span>',
+ '    ack.<span class="k4">acknowledge</span>();',
+ '    <span class="k1">return</span>;',
+ '  }',
+ '  <span class="k1">try</span> {',
+ '    service.<span class="k4">apply</span>(evt);                    <span class="k5">// business change</span>',
+ '    processed.<span class="k4">save</span>(evt.<span class="k4">id</span>());              <span class="k5">// record for idempotency</span>',
+ '  } <span class="k1">catch</span> (PermanentFailure e) {',
+ '    deadLetter.<span class="k4">send</span>(evt, e);               <span class="k5">// never block the partition</span>',
+ '    metrics.<span class="k4">counter</span>(<span class="k2">"dlq.sent"</span>).<span class="k4">increment</span>();',
+ '  }',
+ '  ack.<span class="k4">acknowledge</span>();                       <span class="k5">// produced vs consumed stays honest</span>',
+ '}'
+];
 
 /* ===== BUILD UI ===== */
 $('#yr').textContent=new Date().getFullYear();
-$('#track').innerHTML=(function(){var s=MARQUEE.map(function(m){return '<span>'+m+'</span>'}).join('');return s+s})();
 
 $('#caps').innerHTML=CAPS.map(function(c,i){
   return '<div class="card cap reveal" style="--d:'+((i%3)*.08)+'s"><div class="ic">'+c[0]+'</div><h3>'+c[1]+'</h3><p>'+c[2]+'</p><div class="tags">'+c[3].map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>';
@@ -772,6 +910,21 @@ $('#lead').innerHTML=LEAD.map(function(l,i){return '<div class="card lead-card r
   show(0);
 })();
 
+
+$('#stack').innerHTML=STACK.map(function(l,i){
+  return '<div class="layer reveal" style="--lc:'+l[2]+';--d:'+(i*.06)+'s"><h4>'+l[0]+'<small>'+l[1]+'</small></h4><div class="tiles">'+l[3].map(function(t){return '<span class="tile" tabindex="0" data-d="'+t[1]+'">'+t[0]+'</span>'}).join('')+'</div></div>';
+}).join('');
+$('#pca').innerHTML=PCA.map(function(p,i){return '<div class="card pca-card reveal" style="--d:'+((i%3)*.08)+'s"><div class="no">'+p[0]+'</div><h4>'+p[1]+'</h4><p>'+p[2]+'</p></div>'}).join('');
+$('#princ').innerHTML=PRINC.map(function(p,i){return '<div class="card pca-card reveal" style="--d:'+((i%3)*.08)+'s"><div class="no">Principle '+(i+1)+'</div><h4>'+p[0]+'</h4><p>'+p[1]+'</p></div>'}).join('');
+$('#pipe').innerHTML=ENGSTEPS.map(function(p){return '<div class="st"><h4>'+p[0]+'</h4><p>'+p[1]+'</p></div>'}).join('');
+$('#engcards').innerHTML=ENGCARDS.map(function(c,i){return '<div class="card cap reveal" style="--d:'+(i*.08)+'s"><div class="ic">'+c[0]+'</div><h3>'+c[1]+'</h3><p>'+c[2]+'</p></div>'}).join('');
+(function(){
+  var pre=$('#code');pre.innerHTML=CODE.map(function(l){return '<span class="ln">'+l+'</span>'}).join('');
+  var lines=$$('.ln',pre);
+  function play(){lines.forEach(function(l,i){setTimeout(function(){l.classList.add('on')},RM?0:i*180)})}
+  new IntersectionObserver(function(e,o){if(e[0].isIntersecting){play();o.disconnect()}},{threshold:.3}).observe(pre);
+})();
+
 $('#adrs').innerHTML=ADRS.map(function(a,i){
   return '<article class="card adr reveal" style="--d:'+((i%2)*.08)+'s"><div class="top"><span class="no">'+a[0]+'</span><span class="pill '+a[6]+'">'+a[1]+'</span></div><h3>'+a[2]+'</h3><dl><div><dt>Context</dt><dd>'+a[3]+'</dd></div><div><dt>Decision</dt><dd>'+a[4]+'</dd></div></dl><div class="out">'+a[5]+'</div></article>';
 }).join('');
@@ -784,18 +937,14 @@ $('#tl').innerHTML=JOBS.map(function(j,k){
   return '<article class="card job reveal'+(j.cur?' cur':'')+'"><span class="n">'+(k+1)+'</span><div class="meta"><h3>'+j.t+'</h3><span class="when">'+j.w+'</span></div><div class="org">'+j.o+'</div><ul>'+j.b.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></article>';
 }).join('');
 
-/* skills tabs */
+/* skills bento */
 (function(){
-  var names=Object.keys(SKILLS),tabs=$('#tabs'),chips=$('#chips');
-  tabs.innerHTML=names.map(function(n,i){return '<button class="tab'+(i?'':' on')+'" role="tab" data-n="'+n+'">'+n+'</button>'}).join('');
-  function show(n){
-    chips.innerHTML=SKILLS[n].map(function(s,i){return '<span class="chip" style="--i:'+i+'">'+s[0]+(s[1]===1?'<em>PROD</em>':(s[1]?'<em style="color:var(--tx3)">'+s[1]+'</em>':''))+'</span>'}).join('');
-  }
-  tabs.addEventListener('click',function(e){
-    var b=e.target.closest('.tab');if(!b)return;
-    $$('.tab',tabs).forEach(function(x){x.classList.toggle('on',x===b)});show(b.dataset.n);
-  });
-  show(names[0]);
+  var ICONS={'Cloud and platform':'☁','Backend and APIs':'☕','Events and messaging':'📨','Architecture':'🏛','Data':'🗄','Security and edge':'🛡','Observability':'🔭','Quality and delivery':'✅','Languages':'⌨','AI-native':'🤖'};
+  var ORDER=[['Cloud and platform',7,1],['Backend and APIs',5,1],['Events and messaging',4],['Architecture',4],['Data',4],['Security and edge',4],['Observability',4],['Quality and delivery',4],['Languages',6],['AI-native',6]];
+  $('#bento').innerHTML=ORDER.map(function(o,i){
+    var items=SKILLS[o[0]].map(function(s){return '<span'+(s[1]===1?' class="p"':'')+'>'+s[0]+(s[1]&&s[1]!==1?'<em>'+s[1]+'</em>':'')+'</span>'}).join('');
+    return '<div class="card reveal'+(o[2]?' feat':'')+'" style="grid-column:span '+o[1]+';--d:'+((i%4)*.06)+'s"><h3><i>'+ICONS[o[0]]+'</i>'+o[0]+'</h3><div class="bchips">'+items+'</div></div>';
+  }).join('');
 })();
 
 /* stepper */
@@ -817,40 +966,75 @@ $('#tl').innerHTML=JOBS.map(function(j,k){
 
 /* architecture diagram */
 (function(){
-  var svg=$('#map'),N={},ns='http://www.w3.org/2000/svg';
-  NODES.forEach(function(n){N[n.id]=n});
-  var h='<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--tx3)"/></marker></defs>';
-  h+='<rect class="zone" x="360" y="40" width="300" height="320" rx="20"/>';
-  h+='<text class="lbl" x="376" y="62">GKE / ANTHOS, 11 CLUSTERS, TERRAFORM + HELM</text>';
-  h+='<text class="lbl" x="690" y="58">DATA AND INTELLIGENCE</text>';
-  EDGES.forEach(function(e,i){
-    h+='<path class="edge" id="e'+i+'" d="'+e[2]+'" marker-end="url(#ar)"/>';
-  });
-  EDGES.forEach(function(e){ if(e[3]){ var m=e[2].match(/M(\d+) (\d+)/); h+='<text class="lbl" x="'+(+m[1]+6)+'" y="'+(+m[2]-6)+'">'+e[3]+'</text>'; }});
-  NODES.forEach(function(n){
-    h+='<g class="node" tabindex="0" role="button" data-id="'+n.id+'" aria-label="'+esc(n.t)+'"><rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="'+n.h+'"/>'
-     +'<text x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2-(n.h>70?4:0))+'" text-anchor="middle">'+esc(n.t)+'</text>'
-     +'<text class="s" x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2+(n.h>70?14:15))+'" text-anchor="middle">'+esc(n.s)+'</text></g>';
-  });
-  h+='<g class="band"><rect x="14" y="398" width="972" height="40"/><text x="500" y="422" text-anchor="middle">SECURITY: OAuth2 / OIDC / JWT  ·  RBAC  ·  Cloud Armor  ·  VPC Service Controls  ·  GDPR and PCI-DSS aware</text></g>';
-  h+='<g class="band"><rect x="14" y="448" width="972" height="40"/><text x="500" y="472" text-anchor="middle">OBSERVABILITY: Prometheus  ·  Grafana  ·  OpenTelemetry  ·  JMeter load and reliability testing</text></g>';
-  svg.innerHTML=h;
-  if(!RM){
-    EDGES.forEach(function(e,i){
+  var svg=$('#map'),ns='http://www.w3.org/2000/svg',panel=$('#panel'),vt=$('#vtabs'),cur='logical',N={};
+  var V={
+   logical:{label:'Logical',zones:[[360,40,300,320,'GKE / ANTHOS, 11 CLUSTERS, TERRAFORM + HELM',376,62]],texts:[[690,58,'DATA AND INTELLIGENCE']],nodes:NODES,edges:EDGES,
+     bands:['SECURITY: OAuth2 / OIDC / JWT  ·  RBAC  ·  Cloud Armor  ·  VPC Service Controls  ·  GDPR and PCI-DSS aware','OBSERVABILITY: Prometheus  ·  Grafana  ·  OpenTelemetry  ·  JMeter load and reliability testing'],
+     intro:['Logical view','Reference platform','Traffic enters through the edge, lands on containerised Spring Boot services, and fans out through events to data, search, analytics and AI. Security and observability wrap every layer.',['REST and SOAP','Kafka and Pub/Sub','OpenAPI 3.0']]},
+   deploy:{label:'Deployment',zones:[[404,28,430,336,'6 GCP PROJECTS, 11 CLUSTERS',420,50]],texts:[],edges:[
+      ['dev','git','M89 90 L89 126',''],['git','gate','M89 196 L89 236',''],['gate','iac','M164 271 C190 271 190 195 224 195',''],
+      ['iac','eu','M394 195 C410 195 410 100 428 100',''],['iac','us','M394 195 L428 195','Helm'],['iac','asia','M394 195 C410 195 410 290 428 290',''],
+      ['cf','eu','M394 75 C410 75 410 90 428 90',''],['eu','obs','M798 100 C830 100 830 180 858 190',''],['us','obs','M798 195 L858 215',''],['asia','obs','M798 290 C830 290 830 240 858 235','']],
+     nodes:[
+      {id:'dev',x:14,y:30,w:150,h:60,t:'Engineers',s:'PR, review, merge',k:'Delivery',d:'Every change starts as a pull request with a hands-on review and approval. Contract-first OpenAPI review happens before implementation.'},
+      {id:'git',x:14,y:126,w:150,h:70,t:'GitHub Actions',s:'CI/CD pipelines',k:'Delivery',d:'Pipelines build, test and publish artefacts and run the Terraform and Helm stages with safe rollout and rollback.'},
+      {id:'gate',x:14,y:236,w:150,h:70,t:'Quality gates',s:'SonarQube, CodeQL',k:'Delivery',d:'Automated gates block regressions and vulnerabilities before anything reaches a cluster.'},
+      {id:'iac',x:224,y:150,w:170,h:90,t:'Terraform + Helm',s:'projects, network, policy',k:'Platform',d:'All GCP projects, networking and firewall policies are Terraform. Workloads ship with Helm and RBAC, so any environment is reproducible.'},
+      {id:'cf',x:224,y:40,w:170,h:70,t:'Cloudflare edge',s:'CDN, WAF, DNS, workers',k:'Edge',d:'Global edge in front of the platform. Migrated from Akamai across 10 domains with zero downtime.'},
+      {id:'eu',x:428,y:70,w:370,h:62,t:'EU clusters',s:'GKE / Anthos',k:'Compute',d:'Part of the 11 GKE and Anthos clusters, re-platformed from OpenShift with zero downtime.'},
+      {id:'us',x:428,y:164,w:370,h:62,t:'US clusters',s:'GKE / Anthos',k:'Compute',d:'US footprint of the same platform, with the same Terraform and Helm definitions as every other region.'},
+      {id:'asia',x:428,y:258,w:370,h:62,t:'Asia clusters',s:'GKE / Anthos',k:'Compute',d:'Asia footprint, kept consistent with the other regions by running the same code and pipelines.'},
+      {id:'obs',x:858,y:150,w:128,h:120,t:'Observability',s:'Prometheus, Grafana, OTel',k:'Operations',d:'Metrics, dashboards and tracing across all regions, with produced-versus-consumed monitoring on events.'}],
+     bands:['11 CLUSTERS  ·  6 PROJECTS  ·  EU, US AND ASIA  ·  MIGRATED FROM OPENSHIFT WITH ZERO DOWNTIME','EVERYTHING AS CODE: TERRAFORM  ·  HELM  ·  RBAC  ·  GITHUB ACTIONS'],
+     intro:['Deployment view','One platform, three regions','The same code, pipelines and policies deploy 11 clusters across 6 GCP projects. Consistency comes from infrastructure as code, not from hope.',['Terraform','Helm','Anthos']]},
+   security:{label:'Security',zones:[[560,92,310,276,'VPC SERVICE CONTROLS PERIMETER',576,114]],texts:[],edges:[
+      ['ext','edge','M134 195 C150 195 150 160 170 160','TLS'],['ext','idn','M134 230 C150 230 150 290 170 290',''],['edge','gw','M320 160 C345 160 345 215 370 215',''],['idn','gw','M320 290 C345 290 345 245 370 245','JWT'],
+      ['gw','svc','M510 230 L576 230','RBAC'],['svc','data','M726 215 C745 215 745 185 760 185',''],['svc','iac','M726 245 C745 245 745 290 760 290',''],['sdlc','svc','M510 345 C560 345 600 290 626 290','']],
+     nodes:[
+      {id:'ext',x:14,y:170,w:120,h:90,t:'Internet',s:'users and partners',k:'Entry',d:'Untrusted by default. Everything that arrives is authenticated, authorised and inspected.'},
+      {id:'edge',x:170,y:120,w:150,h:80,t:'Edge protection',s:'Cloudflare, Cloud Armor',k:'Edge',d:'WAF, DDoS protection and bot management at the edge, on Cloudflare and Google Cloud Armor.'},
+      {id:'idn',x:170,y:250,w:150,h:80,t:'Identity',s:'OAuth2, OIDC, JWT',k:'Identity',d:'Standards-based identity with OAuth2, OpenID Connect and JWT, so services never invent their own authentication.'},
+      {id:'gw',x:370,y:190,w:140,h:80,t:'API layer',s:'RBAC, contract-first',k:'Access',d:'Role-based access control enforced per API, with contracts reviewed before implementation.'},
+      {id:'svc',x:576,y:170,w:150,h:120,t:'Services',s:'Spring Security',k:'Workload',d:'Spring Boot services with Spring Security, least privilege and no secrets in code.'},
+      {id:'data',x:760,y:150,w:100,h:70,t:'Data stores',s:'private access',k:'Data',d:'Data services sit inside the VPC Service Controls perimeter to reduce exfiltration paths.'},
+      {id:'iac',x:760,y:255,w:100,h:70,t:'Policy as code',s:'firewall, IAM',k:'Network',d:'Firewall policies and networking are Terraform, so every change is reviewed and auditable.'},
+      {id:'sdlc',x:370,y:312,w:140,h:66,t:'Supply chain',s:'SonarQube, CodeQL',k:'Pipeline',d:'Static analysis and quality gates run on every change before deployment.'}],
+     bands:['COMPLIANCE-AWARE DESIGN: GDPR  ·  PCI-DSS  ·  LEAST PRIVILEGE  ·  AUDITABLE CHANGE','DETECTION: Prometheus alerts  ·  OpenTelemetry traces  ·  root-cause analysis, days to minutes'],
+     intro:['Security view','Defence in depth','Controls are layered from edge to data: WAF and DDoS protection, standards-based identity, RBAC, a service perimeter and automated supply-chain checks.',['Cloud Armor','VPC SC','OAuth2/OIDC']]}
+  };
+  function draw(){
+    var v=V[cur],h='',ed=v.edges;N={};v.nodes.forEach(function(n){N[n.id]=n});
+    h+='<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--tx3)"/></marker></defs>';
+    v.zones.forEach(function(z){h+='<rect class="zone" x="'+z[0]+'" y="'+z[1]+'" width="'+z[2]+'" height="'+z[3]+'" rx="20"/><text class="lbl" x="'+z[5]+'" y="'+z[6]+'">'+z[4]+'</text>'});
+    v.texts.forEach(function(t){h+='<text class="lbl" x="'+t[0]+'" y="'+t[1]+'">'+t[2]+'</text>'});
+    ed.forEach(function(e,i){h+='<path class="edge" id="e'+i+'" d="'+e[2]+'" marker-end="url(#ar)"/>'});
+    ed.forEach(function(e){if(e[3]){var m=e[2].match(/M(\d+) (\d+)/);h+='<text class="lbl" x="'+(+m[1]+6)+'" y="'+(+m[2]-6)+'">'+e[3]+'</text>'}});
+    v.nodes.forEach(function(n){
+      h+='<g class="node" tabindex="0" role="button" data-id="'+n.id+'" aria-label="'+esc(n.t)+'"><rect x="'+n.x+'" y="'+n.y+'" width="'+n.w+'" height="'+n.h+'"/>'
+       +'<text x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2-(n.h>60?4:2))+'" text-anchor="middle">'+esc(n.t)+'</text>'
+       +'<text class="s" x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2+(n.h>60?14:13))+'" text-anchor="middle">'+esc(n.s)+'</text></g>';
+    });
+    v.bands.forEach(function(b,i){h+='<g class="band"><rect x="14" y="'+(398+i*50)+'" width="972" height="40"/><text x="500" y="'+(422+i*50)+'" text-anchor="middle">'+b+'</text></g>'});
+    svg.innerHTML=h;
+    if(!RM){ed.forEach(function(e,i){
       var c=document.createElementNS(ns,'circle');c.setAttribute('r','3.6');c.setAttribute('class','pkt');
       var a=document.createElementNS(ns,'animateMotion');a.setAttribute('dur',(2.4+i*.25)+'s');a.setAttribute('repeatCount','indefinite');a.setAttribute('begin',(i*.35)+'s');
       var m=document.createElementNS(ns,'mpath');m.setAttributeNS('http://www.w3.org/1999/xlink','href','#e'+i);m.setAttribute('href','#e'+i);
-      a.appendChild(m);c.appendChild(a);svg.appendChild(c);
-    });
+      a.appendChild(m);c.appendChild(a);svg.appendChild(c)})}
+    var it=v.intro;
+    panel.innerHTML='<div class="k">'+it[0]+'</div><h3>'+it[1]+'</h3><p>'+it[2]+'</p><div class="legend">'+it[3].map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div>';
   }
-  var panel=$('#panel');
   function pick(id){
     var n=N[id];if(!n)return;
     $$('.node',svg).forEach(function(g){g.classList.toggle('sel',g.dataset.id===id)});
     panel.innerHTML='<div class="k">'+n.k+' layer</div><h3>'+n.t+'</h3><p>'+n.d+'</p><div class="legend"><span class="tag">'+esc(n.s)+'</span></div>';
   }
+  vt.innerHTML=Object.keys(V).map(function(k,i){return '<button class="tab'+(i?'':' on')+'" role="tab" data-v="'+k+'">'+V[k].label+' view</button>'}).join('');
+  vt.addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;cur=b.dataset.v;$$('.tab',vt).forEach(function(x){x.classList.toggle('on',x===b)});svg.style.opacity=0;setTimeout(function(){draw();svg.style.opacity=1},180)});
+  svg.style.transition='opacity .25s';
   svg.addEventListener('click',function(e){var g=e.target.closest('.node');if(g)pick(g.dataset.id)});
   svg.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var g=e.target.closest('.node');if(g){e.preventDefault();pick(g.dataset.id)}}});
+  draw();
 })();
 
 /* ===== BEHAVIOUR ===== */
