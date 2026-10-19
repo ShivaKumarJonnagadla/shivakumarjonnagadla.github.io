@@ -187,6 +187,7 @@ h1{font-size:clamp(40px,6.6vw,78px);margin-bottom:18px}
 .facts{display:grid;gap:14px}
 .social{display:flex;gap:12px}
 .social a{width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-weight:600;transition:transform .25s,background .25s,color .25s}
+.social a.rbtn{width:auto;padding:0 18px;font-size:13.5px;background:var(--grad);color:#fff;border:0}
 .social a:hover{transform:translateY(-5px) rotate(-6deg);background:var(--blue);color:#fff;border-color:transparent}
 .badges{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .badge-tile{border-radius:18px;padding:16px 12px;text-align:center;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;gap:4px;align-items:center;transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden}
@@ -453,7 +454,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
     <div class="btns reveal" style="--d:.28s">
       <a href="#architecture" class="btn p">Explore the architecture</a>
       <a href="#contact" class="btn g">Get in touch</a>
-      <a href="#" class="btn g" id="print">Save as PDF</a>
+      <a href="assets/Shiva_Kumar_Jonnagadla_Solution_Architect.pdf" class="btn g" download>⬇ Download resume</a>
     </div>
     <div class="stats reveal" style="--d:.34s">
       <div class="stat"><strong data-count="15" data-suf="+">0</strong><span>years in enterprise IT</span></div>
@@ -482,6 +483,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
         <a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>
         <a href="https://github.com/ShivaKumarJonnagadla" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">⌥</a>
         <a href="tel:+46721300149" title="Phone" aria-label="Phone">☎</a>
+        <a href="assets/Shiva_Kumar_Jonnagadla_Solution_Architect.pdf" download class="rbtn">⬇ Resume (.pdf)</a>
       </div>
       <h3 class="reveal" style="font-size:20px;margin:22px 0 14px">Certifications and soft skills</h3>
       <div class="badges">
@@ -682,7 +684,7 @@ footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
   <div class="fgrid">
     <div><h5>Navigation</h5><a href="#about">About</a><a href="#lenses">Profile</a><a href="#capabilities">Capabilities</a><a href="#architecture">Architecture</a><a href="#gcp">Google Cloud</a><a href="#engineering">Engineering</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#credentials">Education</a></div>
     <div><h5>More</h5><a href="#decisions">Decision records</a><a href="#nfr">Quality attributes</a><a href="#approach">Way of working</a><a href="#leadership">Leadership</a></div>
-    <div><h5>Contact me</h5><a href="mailto:shivatsastra@gmail.com">shivatsastra@gmail.com</a><a href="tel:+46721300149">+46 721 300 149</a><a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div><h5>Contact me</h5><a href="mailto:shivatsastra@gmail.com">shivatsastra@gmail.com</a><a href="tel:+46721300149">+46 721 300 149</a><a href="assets/Shiva_Kumar_Jonnagadla_Solution_Architect.pdf" download>Download resume (PDF)</a><a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener">LinkedIn</a></div>
   </div>
   <p>© <span id="yr"></span> Shiva Kumar Jonnagadla · Älmhult, Sweden</p>
 </footer>
@@ -1063,7 +1065,6 @@ $('#tl').innerHTML=JOBS.map(function(j,k){
 // menu
 $('#burger').addEventListener('click',function(){$('#menu').classList.toggle('open')});
 $$('#menu a').forEach(function(a){a.addEventListener('click',function(){$('#menu').classList.remove('open')})});
-$('#print').addEventListener('click',function(e){e.preventDefault();window.print()});
 
 // reveal + counters + rings
 var io=new IntersectionObserver(function(es){
