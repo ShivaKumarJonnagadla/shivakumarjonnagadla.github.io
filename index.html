@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Shiva Kumar Jonnagadla, Senior Solution Architect and Google Cloud Certified Professional Cloud Architect. Enterprise, cloud-native and event-driven architecture at Inter IKEA Digital.">
+<meta name="description" content="Shiva Kumar Jonnagadla, Solution Architect, hands-on Tech Lead and Google Cloud Certified Professional Cloud Architect. Cloud-native, event-driven and AI-native engineering at Inter IKEA Digital.">
 <meta name="theme-color" content="#0b1020">
-<title>Shiva Kumar | Senior Solution Architect</title>
+<title>Shiva Kumar | Solution Architect and Tech Lead</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -57,12 +57,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1500;height:64px;display:flex;al
 .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--tx);cursor:pointer;display:grid;place-items:center;font-size:16px;transition:transform .25s,background .2s}
 .icon-btn:hover{background:var(--line);transform:rotate(18deg)}
 #burger{display:none}
+.dd{position:relative}
+.dd>button{font:500 13px 'Inter',sans-serif;color:var(--tx2);padding:8px 12px;border-radius:10px;border:0;background:none;cursor:pointer;transition:color .2s,background .2s}
+.dd>button:hover,.dd.open>button{color:var(--tx);background:var(--line)}
+.dd-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:200px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s}
+.dd.open .dd-menu{opacity:1;visibility:visible;transform:none}
+.dd-menu a{display:block;padding:10px 12px}
 @media(max-width:1040px){
   #burger{display:grid}
   .links{position:fixed;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg2);padding:12px 16px 20px;border-bottom:1px solid var(--line);
     transform:translateY(-130%);transition:transform .35s;max-height:calc(100vh - 64px);overflow:auto}
   .links.open{transform:none}
   .links a{display:block;padding:12px}
+  .dd>button{display:none}.dd-menu{position:static;opacity:1;visibility:visible;transform:none;border:0;box-shadow:none;padding:0;background:none}
 }
 
 /* layout */
@@ -82,15 +89,15 @@ h2.title{font-size:clamp(30px,4.4vw,48px);margin-bottom:14px}
 /* card with spotlight */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;position:relative;overflow:hidden;
   transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
-.card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(76,141,255,.16),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(76,141,255,.16),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none}
 .card:hover{transform:translateY(-6px);border-color:rgba(76,141,255,.45);box-shadow:var(--shadow)}
 .card:hover::before{opacity:1}
 
 /* hero */
-#home{min-height:100vh;display:flex;align-items:center;padding-top:110px;overflow:hidden;
+#home{min-height:100vh;display:flex;align-items:center;padding-top:110px;padding-bottom:110px;overflow:hidden;
   background:radial-gradient(900px 500px at 80% 10%,rgba(155,123,255,.16),transparent 60%),radial-gradient(800px 500px at 10% 90%,rgba(47,209,139,.1),transparent 60%),var(--bg)}
 #net{position:absolute;inset:0;width:100%;height:100%;opacity:.8}
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center}
 .badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:13px;font-weight:500;margin-bottom:26px}
 .badge b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--blue) 0 25%,var(--red) 0 50%,var(--yellow) 0 75%,var(--green) 0);color:#fff;font-size:11px;position:relative}
 .badge b::after{content:"";position:absolute;inset:5px;background:var(--card);border-radius:50%}
@@ -99,28 +106,25 @@ h2.title{font-size:clamp(30px,4.4vw,48px);margin-bottom:14px}
 h1{font-size:clamp(40px,6.6vw,78px);margin-bottom:18px}
 .type{font-family:'JetBrains Mono',monospace;font-size:clamp(14px,1.7vw,18px);color:var(--green);min-height:28px;margin-bottom:22px}
 .type::after{content:"";display:inline-block;width:9px;height:1.1em;background:var(--green);margin-left:4px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
-.hero p.sub{color:var(--tx2);font-size:18px;max-width:600px;margin-bottom:30px}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px}
+.hero p.sub{color:var(--tx2);font-size:18px;max-width:720px;margin-bottom:30px}
+.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:38px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:12px;font-weight:600;font-size:14.5px;border:1px solid var(--line);cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;font-family:inherit;color:var(--tx);background:transparent}
 .btn:hover{transform:translateY(-3px)}
 .btn.p{background:var(--grad);border:0;color:#fff;box-shadow:0 10px 28px rgba(76,141,255,.35);background-size:150% 100%}
 .btn.p:hover{box-shadow:0 14px 34px rgba(76,141,255,.5);background-position:100% 0}
 .btn.g:hover{background:var(--line)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:840px}
 .stat{padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .stat strong{display:block;font-family:'Space Grotesk';font-size:30px;line-height:1}
 .stat span{font-size:12px;color:var(--tx3);display:block;margin-top:6px}
-.photo-wrap{position:relative;max-width:380px;margin:0 auto;perspective:900px}
-.photo{border-radius:28px;overflow:hidden;position:relative;border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .2s;transform-style:preserve-3d}
-.photo img{width:100%;aspect-ratio:1;object-fit:cover}
-.photo-wrap::before{content:"";position:absolute;inset:-14px;border-radius:36px;background:var(--grad);filter:blur(30px);opacity:.35;animation:float 6s ease-in-out infinite}
-.chip-float{position:absolute;padding:8px 14px;border-radius:12px;font-size:12px;font-weight:600;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;gap:8px;align-items:center;z-index:2}
-.chip-float.a{left:-26px;top:12%;animation:float 5s ease-in-out infinite}
-.chip-float.b{right:-22px;top:46%;animation:float 6.5s ease-in-out -2s infinite}
-.chip-float.c{left:-14px;bottom:8%;animation:float 5.6s ease-in-out -1s infinite}
-.scroll-cue{position:absolute;bottom:26px;left:50%;width:24px;height:40px;border:2px solid var(--line);border-radius:14px;transform:translateX(-50%);z-index:1}
-.scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--tx2);animation:wheel 1.8s infinite}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.photo-wrap{order:-1;max-width:260px}.stats{grid-template-columns:repeat(2,1fr)}.chip-float{display:none}.scroll-cue{display:none}}
+.avatar{position:relative;width:200px;height:200px;margin-bottom:28px;perspective:700px}
+.avatar::before{content:"";position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(var(--blue),var(--violet),var(--green),var(--yellow),var(--blue));animation:spinSlow 6s linear infinite;filter:blur(.5px)}
+.avatar::after{content:"";position:absolute;inset:-26px;border-radius:50%;border:1px dashed var(--line);animation:spinSlow 30s linear infinite reverse}
+.photo{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:5px solid var(--bg);z-index:1;transition:transform .2s;transform-style:preserve-3d}
+.photo img{width:100%;height:100%;object-fit:cover}
+.cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--card);animation:bounce 1.8s infinite}
+.cue i{width:10px;height:10px;border-right:2px solid var(--tx);border-bottom:2px solid var(--tx);transform:rotate(45deg) translate(-2px,-2px)}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.avatar{width:160px;height:160px}}
 
 /* marquee */
 .marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--bg2);padding:18px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -134,10 +138,53 @@ h1{font-size:clamp(40px,6.6vw,78px);margin-bottom:18px}
 .about p{color:var(--tx2);margin-bottom:16px;font-size:16.5px}
 .about p strong{color:var(--tx);font-weight:600}
 .facts{display:grid;gap:14px}
+.social{display:flex;gap:12px}
+.social a{width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-weight:600;transition:transform .25s,background .25s,color .25s}
+.social a:hover{transform:translateY(-5px) rotate(-6deg);background:var(--blue);color:#fff;border-color:transparent}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.badge-tile{border-radius:18px;padding:16px 12px;text-align:center;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;gap:4px;align-items:center;transition:transform .35s,box-shadow .35s;position:relative;overflow:hidden}
+.badge-tile:hover{transform:translateY(-6px) rotate(-1.5deg);box-shadow:var(--shadow)}
+.badge-tile b{font-size:26px}
+.badge-tile span{font-family:'Space Grotesk';font-weight:700;font-size:15px}
+.badge-tile em{font-style:normal;font-size:11.5px;color:var(--tx2);line-height:1.3}
+.badge-tile small{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tx3)}
+.badge-tile.gcp{border-color:rgba(255,197,61,.5);background:linear-gradient(160deg,rgba(76,141,255,.18),rgba(255,197,61,.14),var(--card))}
+.badge-tile.ora{border-color:rgba(255,107,107,.4);background:linear-gradient(160deg,rgba(255,107,107,.16),var(--card))}
+.badge-tile.neo{border-color:rgba(47,209,139,.4);background:linear-gradient(160deg,rgba(47,209,139,.16),var(--card))}
+.ring-tile{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.ring-tile svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);filter:drop-shadow(0 0 8px color-mix(in srgb,var(--c) 40%,transparent))}
+.ring-tile circle{fill:none;stroke-width:9}
+.ring-tile .rb{stroke:color-mix(in srgb,var(--c) 18%,transparent)}
+.ring-tile .rf{stroke:var(--c);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1) .3s}
+.ring-tile.in .rf{stroke-dashoffset:0}
+.ring-tile div{width:76%;height:76%;border-radius:50%;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;text-align:center;line-height:1.2;transition:transform .35s}
+.ring-tile:hover div{transform:scale(1.07)}
+.ring-tile i{font-style:normal;font-size:20px;margin-bottom:3px}
+@media(max-width:420px){.badges{grid-template-columns:repeat(2,1fr)}}
 .fact{display:flex;gap:14px;align-items:flex-start;padding:18px 20px}
 .fact i{font-style:normal;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;font-size:18px;background:rgba(76,141,255,.14)}
 .fact h4{font-size:15px;margin-bottom:2px}.fact p{font-size:13.5px;margin:0;color:var(--tx3)}
 @media(max-width:900px){.about{grid-template-columns:1fr}}
+
+/* numbers + lens + lead */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.nums .stat{padding:26px 22px;text-align:center}
+.nums .stat strong{font-size:clamp(34px,4.4vw,52px);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nums .stat span{font-size:13.5px}
+@media(max-width:900px){.nums{grid-template-columns:repeat(2,1fr)}}
+.lens{padding:34px}
+.lens>*{animation:fadeup .5s both}
+.lens h3{font-size:clamp(22px,3vw,30px);margin-bottom:8px}
+.lens .lead{margin-bottom:12px;font-size:15.5px;max-width:none}
+.lens .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:22px}
+.lens h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);margin-bottom:12px;font-weight:500}
+.lens ul{list-style:none;display:grid;gap:10px}
+.lens li{padding:12px 16px;border-radius:12px;border:1px solid rgba(47,209,139,.25);background:rgba(47,209,139,.08);font-size:14.5px;font-weight:500}
+@media(max-width:760px){.lens .cols{grid-template-columns:1fr}}
+.lead-card .ic{font-size:28px;margin-bottom:12px;display:block;transition:transform .4s}
+.lead-card:hover .ic{transform:scale(1.2) rotate(-6deg)}
+.lead-card h3{font-size:19px;margin-bottom:8px}
+.lead-card p{color:var(--tx2);font-size:14.5px}
 
 /* capabilities */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -226,21 +273,39 @@ svg.map{width:100%;height:auto;display:block}
 @media(max-width:700px){.steps{grid-template-columns:repeat(3,1fr);row-gap:16px}.steps::before,.steps .bar{display:none}}
 
 /* timeline */
-.tl{position:relative;padding-left:34px;--fill:0%}
-.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
-.tl::after{content:"";position:absolute;left:8px;top:6px;width:2px;height:calc((100% - 12px)*var(--fill));background:var(--grad)}
-.job{margin-bottom:26px;position:relative}
-.job::before{content:"";position:absolute;left:-34px;top:30px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--blue);transition:transform .3s,background .3s}
-.job.in::before{background:var(--blue);animation:ping 1.2s ease-out 1}
+.tl{position:relative;--fill:0%;display:grid;gap:34px}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:var(--line)}
+.tl::after{content:"";position:absolute;left:50%;top:0;width:2px;margin-left:-1px;height:calc(100%*var(--fill));background:var(--grad)}
+.job{width:calc(50% - 44px);position:relative;overflow:visible}
+.job:nth-child(odd){justify-self:start}
+.job:nth-child(even){justify-self:end}
+.job .n{position:absolute;top:22px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;color:var(--tx);background:var(--bg);border:3px solid var(--blue);z-index:2;transition:background .4s,color .4s,transform .4s}
+.job:nth-child(odd) .n{right:-64px}
+.job:nth-child(even) .n{left:-64px}
+.job.in .n{background:var(--blue);color:#fff;animation:ping 1.2s ease-out 1}
+.job:hover .n{transform:scale(1.15)}
+.job::after{content:"";position:absolute;top:41px;width:24px;height:2px;background:var(--line)}
+.job:nth-child(odd)::after{right:-24px}
+.job:nth-child(even)::after{left:-24px}
 .job .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;margin-bottom:6px}
-.job h3{font-size:22px}
+.job h3{font-size:21px}
 .job .when{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--blue)}
 .job .org{color:var(--tx3);font-size:14px;margin-bottom:14px}
 .job ul{list-style:none;display:grid;gap:10px}
-.job li{color:var(--tx2);font-size:15px;padding-left:22px;position:relative}
+.job li{color:var(--tx2);font-size:14.5px;padding-left:22px;position:relative}
 .job li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:2px;background:var(--blue);transform:rotate(45deg)}
 .job li strong{color:var(--tx);font-weight:600}
 .job.cur{border-color:rgba(76,141,255,.4)}
+.job:nth-child(odd).reveal{transform:translateX(-40px) translateY(10px)}
+.job:nth-child(even).reveal{transform:translateX(40px) translateY(10px)}
+.job.reveal.in{transform:none}
+@media(max-width:860px){
+  .tl::before,.tl::after{left:20px}
+  .job{width:calc(100% - 58px);justify-self:end!important}
+  .job .n{left:-58px!important;right:auto!important}
+  .job::after{left:-18px!important;right:auto!important;width:18px}
+  .job:nth-child(odd).reveal,.job:nth-child(even).reveal{transform:translateY(24px)}
+}
 
 /* credentials */
 .cert{display:flex;gap:16px;align-items:flex-start}
@@ -258,9 +323,19 @@ svg.map{width:100%;height:auto;display:block}
 .cl{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:10px}
 .cl a{padding:14px 22px;border-radius:14px;border:1px solid var(--line);background:var(--card);font-weight:500;font-size:14.5px;display:flex;gap:10px;align-items:center;transition:transform .25s,border-color .25s}
 .cl a:hover{transform:translateY(-4px);border-color:var(--blue)}
-footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;border-top:1px solid var(--line)}
+footer{padding:48px clamp(16px,4vw,48px) 28px;color:var(--tx3);font-size:13px;border-top:1px solid var(--line);background:var(--bg2)}
+.fgrid{max-width:1180px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.fgrid h5{font-family:'Space Grotesk';font-size:15px;color:var(--tx);margin-bottom:12px}
+.fgrid a{display:block;padding:4px 0;color:var(--tx2);transition:color .2s,transform .2s}
+.fgrid a:hover{color:var(--blue);transform:translateX(4px)}
+footer p{text-align:center;border-top:1px solid var(--line);padding-top:20px}
+@media(max-width:640px){.fgrid{grid-template-columns:1fr}}
+#totop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:0;background:var(--grad);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 10px 26px rgba(76,141,255,.4);z-index:1400;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s}
+#totop.show{opacity:1;transform:none;pointer-events:auto}
+#totop:hover{transform:translateY(-4px)}
 
 /* keyframes */
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
 @keyframes blink{50%{opacity:0}}
 @keyframes float{50%{transform:translateY(-12px)}}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(47,209,139,0)}100%{box-shadow:0 0 0 0 rgba(47,209,139,0)}}
@@ -280,7 +355,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 }
 @media print{
   :root{--bg:#fff;--bg2:#fff;--card:#fff;--tx:#000;--tx2:#222;--tx3:#555;--line:#ccc;--nav:#fff}
-  nav,#progress,#glow,#net,.scroll-cue,.marquee,.icon-btn,.btns,.chip-float{display:none!important}
+  nav,#progress,#glow,#net,.cue,.marquee,.icon-btn,.btns,#totop{display:none!important}
   .reveal{opacity:1!important;transform:none!important}
   section{padding:24px 0;break-inside:avoid}#home{min-height:0}
   .card{box-shadow:none;break-inside:avoid}.grad{color:#000;background:none}
@@ -294,16 +369,22 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 <nav>
   <a href="#home" class="brand"><i>SK</i>Shiva Kumar</a>
   <ul class="links" id="menu">
+    <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#lenses">Profile</a></li>
     <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#architecture">Architecture</a></li>
-    <li><a href="#decisions">Decisions</a></li>
-    <li><a href="#skills">Toolbox</a></li>
-    <li><a href="#nfr">NFRs</a></li>
-    <li><a href="#approach">Approach</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#credentials">Credentials</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#credentials">Education</a></li>
+    <li class="dd"><button type="button" id="more" aria-haspopup="true" aria-expanded="false">More <span aria-hidden="true">▾</span></button>
+      <div class="dd-menu" id="ddm">
+        <a href="#decisions">Decision records</a>
+        <a href="#nfr">Quality attributes</a>
+        <a href="#approach">Way of working</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div></li>
   </ul>
   <div class="nav-r">
     <button class="icon-btn" id="theme" aria-label="Toggle light and dark theme">☾</button>
@@ -315,31 +396,24 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 <section id="home">
   <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap hero">
-    <div>
-      <div class="badge reveal"><b><span>G</span></b>Google Cloud Certified Professional Cloud Architect<span class="dot"></span></div>
-      <h1 class="reveal" style="--d:.08s">Shiva Kumar<br><span class="grad">Jonnagadla</span></h1>
-      <div class="type reveal mono" style="--d:.16s" id="type" aria-live="off"></div>
-      <p class="sub reveal" style="--d:.24s">Senior Solution Architect with 15+ years of delivering complex enterprise systems. I turn business needs into resilient, secure and cost-efficient architecture, and I still write the code to prove it.</p>
-      <div class="btns reveal" style="--d:.32s">
-        <a href="#architecture" class="btn p">Explore the architecture</a>
-        <a href="#contact" class="btn g">Get in touch</a>
-        <a href="#" class="btn g" id="print">Save as PDF</a>
-      </div>
-      <div class="stats reveal" style="--d:.4s">
-        <div class="stat"><strong data-count="15" data-suf="+">0</strong><span>years in enterprise IT</span></div>
-        <div class="stat"><strong data-count="20" data-suf="+">0</strong><span>Spring Boot services designed</span></div>
-        <div class="stat"><strong data-count="10">0</strong><span>domains moved with zero downtime</span></div>
-        <div class="stat"><strong data-count="100" data-suf="x">0</strong><span>lower cost via in-house build</span></div>
-      </div>
+    <div class="avatar reveal"><div class="photo" id="photo"><img src="assets/photo.jpg" alt="Portrait of Shiva Kumar Jonnagadla" width="420" height="420"></div></div>
+    <div class="badge reveal" style="--d:.06s"><b><span>G</span></b>Google Cloud Certified Professional Cloud Architect<span class="dot"></span></div>
+    <h1 class="reveal" style="--d:.1s">Hi, I am <span class="grad">Shiva Kumar</span></h1>
+    <div class="type reveal mono" style="--d:.16s" id="type" aria-live="off"></div>
+    <p class="sub reveal" style="--d:.22s">Solution Architect and hands-on Tech Lead with 15+ years in enterprise IT at Inter IKEA Digital, Älmhult, Sweden. I architect a global, cloud-native GCP platform, own 20+ Java Spring Boot microservices, and still write, review and ship code every day.</p>
+    <div class="btns reveal" style="--d:.28s">
+      <a href="#architecture" class="btn p">Explore the architecture</a>
+      <a href="#contact" class="btn g">Get in touch</a>
+      <a href="#" class="btn g" id="print">Save as PDF</a>
     </div>
-    <div class="photo-wrap reveal" style="--d:.2s">
-      <div class="chip-float a"><span class="dot"></span>Inter IKEA Digital</div>
-      <div class="chip-float b">☁ GCP Certified</div>
-      <div class="chip-float c">Älmhult, Sweden</div>
-      <div class="photo" id="photo"><img src="assets/photo.jpg" alt="Portrait of Shiva Kumar Jonnagadla" width="420" height="420"></div>
+    <div class="stats reveal" style="--d:.34s">
+      <div class="stat"><strong data-count="15" data-suf="+">0</strong><span>years in enterprise IT</span></div>
+      <div class="stat"><strong data-count="20" data-suf="+">0</strong><span>Spring Boot services owned</span></div>
+      <div class="stat"><strong data-count="10">0</strong><span>domains migrated, zero downtime</span></div>
+      <div class="stat"><strong data-count="100" data-suf="x">0</strong><span>lower cost via in-house build</span></div>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true"></div>
+  <a href="#about" class="cue" aria-label="Scroll to About"><i></i></a>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
@@ -349,22 +423,58 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
   <div class="wrap about">
     <div>
       <div class="eyebrow reveal">About</div>
-      <h2 class="title reveal">An architect who <span class="grad">owns the solution end to end</span></h2>
-      <p class="reveal">I translate business needs into system specifications, design the technology solution, prepare the architecture diagrams, and work shoulder to shoulder with development teams to land it in production.</p>
-      <p class="reveal">My depth is in <strong>Java and J2EE</strong>, <strong>microservice and service-oriented architecture</strong>, <strong>event-driven design</strong> and <strong>cloud-native platforms</strong>, backed by a strong command of non-functional requirements: performance, security, scalability and resilience.</p>
-      <p class="reveal">I set engineering standards and code-review processes, own and resolve the hardest technical problems, and manage global stakeholders across internal and external teams. I am also a <strong>Google Cloud Certified Professional Cloud Architect</strong>.</p>
+      <h2 class="title reveal">Architecture ownership, <span class="grad">engineering that never left the keyboard</span></h2>
+      <p class="reveal">I am the <strong>sole architect of a global, cloud-native GCP platform</strong> where more than 80% of the data arrives through integrations. I partner with product owners to shape requirements into designs, lead cross-team data and schema agreements, and set the patterns and roadmaps other teams build against.</p>
+      <p class="reveal">I also build. I own <strong>20+ Java Spring Boot microservices</strong> and the middleware behind the front end, write and merge production code daily, and keep decisions grounded in the real codebase. My depth is in <strong>Java, event-driven design on Kafka, PostgreSQL</strong> and cloud-native platforms, with a strong command of security, performance and resilience.</p>
+      <p class="reveal">I am <strong>Google Cloud Certified (Professional Cloud Architect)</strong>, work AI-native with Claude Code and MCP tooling, and I am known for modernising platforms and for driving real, measurable cost reduction.</p>
     </div>
-    <div class="facts">
-      <div class="card fact reveal"><i>🏗</i><div><h4>Solution and enterprise architecture</h4><p>Reference architectures, decision records, prototypes and end-to-end proofs of concept.</p></div></div>
-      <div class="card fact reveal" style="--d:.08s"><i>🧑‍💻</i><div><h4>Hands-on technologist</h4><p>Reviews code, debugs production, and builds the PoC before committing the platform.</p></div></div>
-      <div class="card fact reveal" style="--d:.16s"><i>🌍</i><div><h4>Global stakeholder management</h4><p>Product, platform and external partners aligned on one agreed architecture.</p></div></div>
-      <div class="card fact reveal" style="--d:.24s"><i>🤖</i><div><h4>AI-augmented engineering</h4><p>Claude, Copilot, Vertex AI and a reusable MCP framework for better delivery.</p></div></div>
+    <div class="side">
+      <div class="social reveal">
+        <a href="mailto:shivatsastra@gmail.com" title="Email" aria-label="Email">✉</a>
+        <a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/ShivaKumarJonnagadla" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">⌥</a>
+        <a href="tel:+46721300149" title="Phone" aria-label="Phone">☎</a>
+      </div>
+      <h3 class="reveal" style="font-size:20px;margin:22px 0 14px">Certifications and soft skills</h3>
+      <div class="badges">
+        <div class="badge-tile gcp reveal"><b>☁</b><span>Google Cloud</span><em>Professional Cloud Architect</em><small>2026 to 2028</small></div>
+        <div class="badge-tile ora reveal" style="--d:.08s"><b>🗄</b><span>Oracle</span><em>Database Certified Professional</em><small>DBA</small></div>
+        <div class="badge-tile neo reveal" style="--d:.16s"><b>🕸</b><span>Neo4j</span><em>Certified Professional</em><small>Graph and Cypher</small></div>
+        <div class="ring-tile reveal" style="--c:#4c8dff;--d:.2s"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" pathLength="100"/></svg><div><i>👥</i>Team work</div></div>
+        <div class="ring-tile reveal" style="--c:#ff6b6b;--d:.26s"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" pathLength="100"/></svg><div><i>🔄</i>Adaptability</div></div>
+        <div class="ring-tile reveal" style="--c:#ffc53d;--d:.32s"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" pathLength="100"/></svg><div><i>👑</i>Leadership</div></div>
+        <div class="ring-tile reveal" style="--c:#2fd18b;--d:.38s"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" pathLength="100"/></svg><div><i>🧑‍🏫</i>Mentoring</div></div>
+        <div class="ring-tile reveal" style="--c:#c864e8;--d:.44s"><svg viewBox="0 0 100 100"><circle class="rb" cx="50" cy="50" r="44"/><circle class="rf" cx="50" cy="50" r="44" pathLength="100"/></svg><div><i>🤝</i>Stakeholders</div></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- NUMBERS -->
+<section id="numbers" style="padding-block:56px">
+  <div class="wrap">
+    <div class="nums">
+      <div class="stat reveal"><strong data-count="80" data-suf="%+">0</strong><span>of platform data arrives through integrations</span></div>
+      <div class="stat reveal" style="--d:.06s"><strong data-count="11">0</strong><span>clusters moved to GCP Anthos, 6 projects, zero downtime</span></div>
+      <div class="stat reveal" style="--d:.12s"><strong data-count="130" data-suf="GB">0</strong><span>PostgreSQL table partitioned online</span></div>
+      <div class="stat reveal" style="--d:.18s"><strong data-count="3000" data-suf="+">0</strong><span>labour hours saved per store every year</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LENSES -->
+<section id="lenses" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">One profile, three lenses</div>
+    <h2 class="title reveal">Architect, tech lead, <span class="grad">platform builder</span></h2>
+    <p class="lead reveal">The same career, seen through the lens that matters to you. Pick a view.</p>
+    <div class="tabs reveal" id="ltabs" role="tablist"></div>
+    <div class="card lens reveal" id="lens"></div>
+  </div>
+</section>
+
 <!-- CAPABILITIES -->
-<section id="capabilities" class="alt">
+<section id="capabilities">
   <div class="wrap">
     <div class="eyebrow reveal">Capabilities</div>
     <h2 class="title reveal">Everything a solution architect <span class="grad">is expected to deliver</span></h2>
@@ -374,7 +484,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- ARCHITECTURE -->
-<section id="architecture">
+<section id="architecture" class="alt">
   <div class="wrap">
     <div class="eyebrow reveal">Reference architecture</div>
     <h2 class="title reveal">The platform, <span class="grad">end to end</span></h2>
@@ -394,7 +504,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- DECISIONS -->
-<section id="decisions" class="alt">
+<section id="decisions">
   <div class="wrap">
     <div class="eyebrow reveal">Architecture decision records</div>
     <h2 class="title reveal">Decisions that <span class="grad">changed the outcome</span></h2>
@@ -404,7 +514,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<section id="skills" class="alt">
   <div class="wrap">
     <div class="eyebrow reveal">Toolbox</div>
     <h2 class="title reveal">Technology I <span class="grad">design with</span></h2>
@@ -415,7 +525,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- NFR -->
-<section id="nfr" class="alt">
+<section id="nfr">
   <div class="wrap">
     <div class="eyebrow reveal">Non-functional requirements</div>
     <h2 class="title reveal">Quality attributes are <span class="grad">designed in, not bolted on</span></h2>
@@ -425,7 +535,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- APPROACH -->
-<section id="approach">
+<section id="approach" class="alt">
   <div class="wrap">
     <div class="eyebrow reveal">Way of working</div>
     <h2 class="title reveal">From idea to <span class="grad">governed production system</span></h2>
@@ -435,8 +545,18 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
   </div>
 </section>
 
+<!-- LEADERSHIP -->
+<section id="leadership" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Leadership</div>
+    <h2 class="title reveal">How I <span class="grad">lead from inside the code</span></h2>
+    <p class="lead reveal">The best technical leadership is quiet, practical and close to the work.</p>
+    <div class="grid3" id="lead"></div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
-<section id="experience" class="alt">
+<section id="experience">
   <div class="wrap">
     <div class="eyebrow reveal">Experience</div>
     <h2 class="title reveal">A career built <span class="grad">from the code up</span></h2>
@@ -446,7 +566,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- CREDENTIALS -->
-<section id="credentials">
+<section id="credentials" class="alt">
   <div class="wrap">
     <div class="eyebrow reveal">Credentials</div>
     <h2 class="title reveal">Certified and <span class="grad">continuously learning</span></h2>
@@ -461,7 +581,7 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="alt contact">
+<section id="contact" class="contact">
   <div class="wrap">
     <div class="eyebrow reveal" style="justify-content:center">Contact</div>
     <h2 class="title reveal">Let us design something <span class="grad">that lasts</span></h2>
@@ -474,7 +594,15 @@ footer{padding:32px 16px;text-align:center;color:var(--tx3);font-size:13px;borde
     </div>
   </div>
 </section>
-<footer>© <span id="yr"></span> Shiva Kumar Jonnagadla · Älmhult, Sweden</footer>
+<footer>
+  <div class="fgrid">
+    <div><h5>Navigation</h5><a href="#about">About</a><a href="#lenses">Profile</a><a href="#capabilities">Capabilities</a><a href="#architecture">Architecture</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#credentials">Education</a></div>
+    <div><h5>More</h5><a href="#decisions">Decision records</a><a href="#nfr">Quality attributes</a><a href="#approach">Way of working</a><a href="#leadership">Leadership</a></div>
+    <div><h5>Contact me</h5><a href="mailto:shivatsastra@gmail.com">shivatsastra@gmail.com</a><a href="tel:+46721300149">+46 721 300 149</a><a href="https://www.linkedin.com/in/shiva-kumar-j-271551121" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+  <p>© <span id="yr"></span> Shiva Kumar Jonnagadla · Älmhult, Sweden</p>
+</footer>
+<button id="totop" aria-label="Back to top">↑</button>
 
 <script>
 (function(){
@@ -486,31 +614,34 @@ var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 
 /* ===== DATA ===== */
 var CAPS=[
- ['🏛','Enterprise and solution architecture','Business needs become system specifications, reference architectures, diagrams and decision records that development teams can build from.',['Reference architecture','ADRs','Diagrams','PoC']],
- ['🧩','SOA, EDA and microservices','20+ Java Spring Boot services over REST and SOAP, with event-driven messaging on Kafka and Pub/Sub, and design patterns applied throughout.',['Kafka','Pub/Sub','Spring Boot','Patterns']],
- ['☁','Cloud-native design','Containerised, declarative and portable platforms on Google Cloud, including multi-cluster Kubernetes and OpenShift to Anthos re-platforming.',['GCP','Kubernetes','Anthos','Terraform']],
- ['🛡','Security and web protection','OAuth2, OIDC and JWT, RBAC, WAF and edge protection, with PCI-DSS and GDPR awareness built into design reviews.',['OAuth2/OIDC','RBAC','WAF','GDPR']],
- ['⚡','Performance and scalability','Load and reliability testing with JMeter, caching strategy, CDN offload and capacity thinking before the first release.',['JMeter','Redis','CDN','Tuning']],
- ['🔭','Observability and resilience','Metrics, traces and logs that make failure visible and recovery routine, using Grafana, Prometheus and OpenTelemetry.',['Prometheus','OpenTelemetry','Grafana','SLOs']],
- ['🔌','API and integration design','Contract-first APIs with OpenAPI 3.0, system integrations with careful data mapping, transformation and error handling.',['OpenAPI 3.0','REST','SOAP','Integration']],
- ['🧠','AI-augmented engineering','A reusable MCP framework that gives AI tooling real repository and system context, plus Claude, Copilot and Vertex AI in daily delivery.',['MCP','Claude','Vertex AI','Gemini']],
- ['📐','Governance and code review','Code-review processes, quality gates with SonarQube and CodeQL, and contract-first API review that keep standards high as teams grow.',['SonarQube','CodeQL','Review process','Standards']],
- ['💶','Cost and value optimisation','Build-versus-buy decisions, right-sized cloud, and in-house services that cost a fraction of licensed alternatives.',['TCO','FinOps mindset','Build vs buy']],
- ['🌐','Stakeholder leadership','Global product, platform and partner stakeholders aligned through clear communication, evaluation criteria and integration methods.',['SAFe','Agile','Alignment']],
- ['🌱','Mentoring and community','Mentoring engineers, running technical sessions and supporting newcomers in the architect community.',['Mentoring','Workshops','Knowledge sharing']]
+ ['🏛','Solution and enterprise architecture','Business needs become designs, reference architectures, roadmaps and decision records that development teams can build against.',['Reference architecture','ADRs','Roadmaps','PoC']],
+ ['🧩','SOA, EDA and microservices','20+ Java Spring Boot services over REST and SOAP, with event-driven messaging on Kafka and Pub/Sub and design patterns applied throughout.',['Kafka','Pub/Sub','Spring Boot','Patterns']],
+ ['☁','Cloud-native design on GCP','Containerised, declarative and portable platforms on Google Cloud, including multi-cluster Kubernetes and the OpenShift to Anthos re-platforming.',['GCP','GKE/Anthos','Terraform','Helm']],
+ ['🛤','Guardrails and golden paths','Product-team needs turned into reusable platform capabilities: shared services, templates and automation that cut repeated work and cognitive load.',['Golden paths','Guardrails','Templates','Automation']],
+ ['🔗','Data integration and contracts','More than 80% of platform data arrives through integrations. I lead schema reviews and data-sharing agreements that keep that data clean and reliable.',['Schema design','Data contracts','Integration','Kafka']],
+ ['🛡','Security and identity','OAuth2, OIDC, JWT and RBAC, with VPC Service Controls and Cloud Armor for WAF and DDoS. Compliance is a first-order design concern.',['OAuth2/OIDC','RBAC','Cloud Armor','VPC SC']],
+ ['⚡','Performance and scalability','Load and reliability testing with JMeter, caching, CDN offload and data modelling that holds up at scale, such as a 130GB table partitioned with zero downtime.',['JMeter','Redis','Partitioning','CDN']],
+ ['🔭','Observability and resilience','Metrics, traces and logs that make failure visible. Standardised monitoring cut time-to-detect for a class of silent failures from days to minutes.',['Prometheus','OpenTelemetry','Grafana','RCA']],
+ ['🔌','API and integration design','Contract-first APIs with OpenAPI 3.0, system integrations with careful data mapping, transformation and error handling.',['OpenAPI 3.0','REST','SOAP','Middleware']],
+ ['🧠','AI-native engineering','A reusable MCP framework gives AI tooling real repository and system context. Claude Code, Copilot and Vertex AI are part of daily delivery.',['MCP','Claude Code','Vertex AI','Gemini']],
+ ['📐','Code review and quality gates','Hands-on reviews and pull-request approvals, with SonarQube, CodeQL and contract-first API review keeping standards high as teams grow.',['SonarQube','CodeQL','PR review','Standards']],
+ ['♻','Modernisation and technical debt','Technical debt driven down proactively: Spring Boot 2.5 to 3.3, OpenShift to GCP and a steady habit of modernising before it becomes someone else\'s problem.',['Spring Boot 3.3','Anthos','Refactoring']],
+ ['💶','Cost and value optimisation','Build-versus-buy decisions, serverless right-sizing and in-house services that cost a fraction of licensed alternatives.',['TCO','Right-sizing','Build vs buy']],
+ ['🌐','Stakeholders and cross-team leadership','Product owners, system owners and global teams aligned through honest trade-off conversations and clear process across organisational boundaries.',['Product owners','SAFe','Alignment']],
+ ['🌱','Mentoring and community','Mentoring engineers, running design reviews, writing ADRs and onboarding material, and sharing knowledge across the engineering community.',['Mentoring','Docs','Workshops']]
 ];
 
 var NODES=[
- {id:'users',x:14,y:196,w:118,h:76,t:'Users and stores',s:'web, mobile, devices',k:'Entry',d:'Global users, store devices and partner systems. The architecture assumes unreliable networks, so clients are tolerant and APIs are idempotent where it matters.'},
- {id:'edge',x:170,y:196,w:140,h:76,t:'CDN, WAF, DNS',s:'Cloudflare workers',k:'Edge',d:'Led the Akamai to Cloudflare migration across 10 domains with zero downtime. CDN, WAF rules, workers and DNS were cut over in stages with rollback at every step.'},
- {id:'api',x:376,y:84,w:268,h:58,t:'API and gateway layer',s:'OpenAPI 3.0, OAuth2, JWT',k:'Platform',d:'Contract-first APIs reviewed before code is written. Authentication with OAuth2, OIDC and JWT, authorisation with RBAC, and consistent error and versioning rules.'},
- {id:'svc',x:376,y:168,w:268,h:78,t:'20+ Spring Boot services',s:'Java 17/21, REST, SOAP',k:'Platform',d:'Domain-aligned microservices built on Spring Boot, modernised from 2.5 to 3.3. Quality gates with SonarQube and CodeQL keep the codebase healthy as it grows.'},
- {id:'bus',x:376,y:272,w:268,h:58,t:'Event backbone',s:'Kafka, Pub/Sub',k:'Platform',d:'Event-driven messaging decouples producers from consumers, absorbs spikes and lets new capabilities subscribe without touching existing services.'},
- {id:'data',x:690,y:70,w:150,h:112,t:'Operational data',s:'Postgres, Oracle, Redis',k:'Data',d:'Polyglot persistence chosen per workload: relational for transactions, Redis for low-latency access, and Neo4j where graph relationships carry the value.'},
- {id:'search',x:690,y:202,w:150,h:68,t:'Search',s:'Elastic + Gemini AI',k:'Data',d:'Elasticsearch powers search and aggregation, with Gemini AI adding intelligent, natural-language product discovery.'},
- {id:'bq',x:690,y:292,w:150,h:68,t:'Analytics',s:'BigQuery',k:'Analytics',d:'A BigQuery analytical layer fed by events. One governed place for reporting data, instead of every team building a private pipeline.'},
- {id:'dash',x:862,y:292,w:124,h:68,t:'Dashboards',s:'Grafana, Looker',k:'Analytics',d:'Reusable dashboards that common teams adopted instead of building their own, which saved effort and kept metrics consistent.'},
- {id:'ai',x:862,y:84,w:124,h:112,t:'AI tooling',s:'MCP, Vertex AI',k:'AI',d:'A reusable Model Context Protocol framework gives AI tooling real repository and system context, with a React interface for engineers. Delivery speed and consistency improved across teams.'}
+ {id:'users',x:14,y:196,w:118,h:76,t:'Users and sources',s:'apps, stores, systems',k:'Entry',d:'Users, store devices and upstream source systems. More than 80% of the platform data arrives through integrations, so schema agreements with system owners matter as much as the services themselves.'},
+ {id:'edge',x:170,y:196,w:140,h:76,t:'Edge protection',s:'Cloudflare, Cloud Armor',k:'Edge',d:'Led the Akamai to Cloudflare migration across 10 domains with zero downtime: CDN, WAF, workers and DNS. Cloud Armor adds WAF and DDoS protection on Google Cloud.'},
+ {id:'api',x:376,y:84,w:268,h:58,t:'API and middleware layer',s:'OpenAPI 3.0, OAuth2, JWT',k:'Platform',d:'Contract-first APIs reviewed before code is written. Authentication with OAuth2, OIDC and JWT, authorisation with RBAC, and middleware that powers the front end.'},
+ {id:'svc',x:376,y:168,w:268,h:78,t:'20+ Spring Boot services',s:'Java 17/21, REST, SOAP',k:'Platform',d:'Built and owned hands-on: Spring Security, JPA and Hibernate, modernised from Spring Boot 2.5 to 3.3. SonarQube and CodeQL quality gates run on every change.'},
+ {id:'bus',x:376,y:272,w:268,h:58,t:'Event backbone',s:'Kafka, Pub/Sub, DLQ',k:'Platform',d:'Event-driven messaging with dead-letter routing, idempotent consumers and produced-versus-consumed monitoring at scale. Producers and consumers evolve independently.'},
+ {id:'data',x:690,y:70,w:150,h:112,t:'Operational data',s:'Postgres, Oracle, Redis',k:'Data',d:'PostgreSQL modelled and tuned for integration and analytical workloads, including a 130GB table restructured with list partitioning and a keyset-pagination backfill, with zero downtime.'},
+ {id:'search',x:690,y:202,w:150,h:68,t:'Search',s:'Elastic + Gemini AI',k:'Data',d:'Elasticsearch search and aggregation, tuned for relevance and speed across large datasets, with Gemini AI for intelligent product discovery.'},
+ {id:'bq',x:690,y:292,w:150,h:68,t:'Analytics',s:'BigQuery',k:'Analytics',d:'A BigQuery analytical layer fed by events: one governed place for reporting data instead of every team building a private pipeline.'},
+ {id:'dash',x:862,y:292,w:124,h:68,t:'Dashboards',s:'Grafana, Looker',k:'Analytics',d:'Reusable ROI, observability and service-health dashboards in Grafana, Prometheus, Superset and Looker Studio, adopted by common teams instead of each building its own.'},
+ {id:'ai',x:862,y:84,w:124,h:112,t:'AI tooling',s:'MCP, Vertex AI',k:'AI',d:'A reusable Model Context Protocol framework gives AI tooling real repository and system context, embedded in the developer framework with Claude Code, Copilot and Vertex AI.'}
 ];
 var EDGES=[
  ['users','edge','M132 234 L170 234','HTTPS'],
@@ -525,81 +656,102 @@ var EDGES=[
 ];
 
 var ADRS=[
- ['ADR 01','CDN','Akamai to Cloudflare across 10 domains','Cost, performance and edge capability pressure on the incumbent CDN. Ten production domains with live traffic could not tolerate downtime.','Migrate in stages covering CDN, WAF, workers and DNS, with parity testing and an instant rollback path per domain.','Zero downtime across all 10 domains, with lower cost and improved performance.','b'],
- ['ADR 02','Platform','OpenShift to GCP (Anthos) re-platforming','A large footprint on OpenShift limited elasticity and tied operations to a platform the organisation was moving away from.','Re-platform onto Google Cloud with Anthos, standardised on declarative configuration and repeatable pipelines across clusters and projects.','11 clusters across 6 projects moved to a consistent, cloud-native operating model.','b'],
- ['ADR 03','Data','A unified model for pricing and range data','Several teams integrated separately with the same pricing and range sources, duplicating logic and drifting out of sync.','Design one reusable, governed capability and a single source of truth, exposed through contract-first APIs.','Duplicated integrations removed, with one consistent source of truth for every consumer.','v'],
- ['ADR 04','AI','A reusable MCP framework for AI tooling','AI assistants produced generic output because they lacked real repository and system context.','Build a Model Context Protocol framework that supplies that context, with a React interface so any engineer can use it.','Higher delivery speed and consistency across teams, from one shared tool.','v'],
- ['ADR 05','Analytics','Search, aggregation and shared dashboards','Teams each built their own reporting and search, with inconsistent results and repeated effort.','Elasticsearch with Gemini AI for search, a BigQuery analytical layer, and reusable dashboards in Grafana, Superset and Looker Studio.','Common teams adopted the shared dashboards instead of building their own.','y'],
- ['ADR 06','Value','Build in-house instead of renting a licence','A licensed third-party service carried high recurring cost for a capability the team could own.','Build the service in-house, keep it simple, and instrument it from day one.','An in-house service at 100x lower cost, plus 3,000+ labour hours saved per store annually through automation.','y']
+ ['ADR 01','CDN','Akamai to Cloudflare across 10 domains','Ten production domains with live traffic, and an edge stack that needed better performance at lower cost.','Migrate in stages covering CDN, WAF, workers and DNS, with a rollback path for every domain.','Zero downtime across all 10 domains, with improved performance and lower cost.','b'],
+ ['ADR 02','Platform','OpenShift to GCP Orbit (Anthos)','A large estate on OpenShift across regions that needed a consistent, cloud-native operating model.','Re-platform onto Google Cloud with everything as code: Terraform, Helm and RBAC, rolled out safely with rollback.','11 clusters across 6 projects in EU, US and Asia moved with zero downtime.','b'],
+ ['ADR 03','Data','A unified model for pricing and range data','Several teams integrated separately with the same sources, duplicating logic and drifting out of sync.','Design one reusable capability and a single governed source of truth behind contract-first APIs.','Duplicated integrations removed, with one consistent source of truth for every consumer.','v'],
+ ['ADR 04','Events','Reliable Kafka messaging','Integration data flows through events, so a lost or duplicated message can quietly corrupt downstream data.','Dead-letter routing, idempotent consumers, and produced-versus-consumed monitoring on Kafka and Pub/Sub.','Failures become visible and recoverable instead of silent.','v'],
+ ['ADR 05','Observability','Standard monitoring after a silent data loss','A silent data-loss incident went unnoticed for days. A Confluent and Grafana monitoring PoC showed a better way.','Standardise monitoring across the estate with Grafana, Prometheus and OpenTelemetry, backed by root-cause analysis.','Time-to-detect for that class of failure dropped from days to minutes.','y'],
+ ['ADR 06','Database','Partitioning a 130GB PostgreSQL table','A very large table was slowing integration and analytical workloads, and it had to stay online.','Restructure with list partitioning and a keyset-pagination backfill.','Restructured with zero downtime.','y'],
+ ['ADR 07','AI','A reusable MCP framework for AI tooling','AI assistants produced generic output because they lacked real repository and system context.','Build a Model Context Protocol framework that supplies that context, with a React interface for engineers.','Higher delivery speed and consistency across teams from one shared tool.','v'],
+ ['ADR 08','Enablement','Golden paths and shared dashboards','Product teams kept rebuilding the same automation, dashboards and templates.','Offer reusable capabilities: shared services, templates, CI/CD and Terraform modules, and common dashboards.','Teams adopted the shared dashboards and templates instead of building their own.','b'],
+ ['ADR 09','Search','Elasticsearch with Gemini AI','Users needed relevant, fast search and aggregation across large datasets.','Design search and aggregation on Elasticsearch, tune queries for relevance and speed, and add Gemini AI.','The first AI-assisted search capability on the platform.','y'],
+ ['ADR 10','Value','Build in-house instead of renting a licence','A licensed tool carried high recurring cost for a capability the team could own.','Build an in-house QR service, right-size serverless, and automate a label rendering pipeline.','100x lower cost than the licence, and 3,000+ labour hours saved per store every year.','y']
 ];
 
 var SKILLS={
- 'Languages':[['Java 17 / 21',1],['J2EE',1],['SQL',1],['PL/SQL',1],['Python',1],['Bash',1],['JavaScript'],['TypeScript','familiar']],
- 'Frameworks':[['Spring Boot',1],['Spring',1],['Spring Security',1],['Hibernate / JPA',1],['Helidon',1],['Quarkus','adjacent']],
- 'Architecture':[['SOA',1],['Event-driven (EDA)',1],['Microservices',1],['Design patterns',1],['Cloud-native design',1],['OO design',1],['Reference architectures',1]],
- 'APIs and integration':[['REST',1],['SOAP',1],['OpenAPI 3.0',1],['Apache Kafka',1],['Pub/Sub',1],['Web services standards',1]],
- 'Cloud and containers':[['Google Cloud',1],['Kubernetes',1],['OpenShift',1],['Docker',1],['Terraform',1],['Anthos',1],['Azure','transferable'],['AWS','transferable']],
- 'Data':[['PostgreSQL',1],['Oracle 19c',1],['MySQL',1],['Redis',1],['Neo4j',1],['Elasticsearch',1],['BigQuery',1]],
- 'AI tooling':[['MCP framework',1],['Claude',1],['GitHub Copilot',1],['Vertex AI',1],['Gemini',1],['React (internal tools)',1]],
- 'Security and NFR':[['Web security',1],['OAuth2 / OIDC',1],['JWT',1],['RBAC',1],['Performance tuning',1],['PCI-DSS awareness'],['GDPR awareness']],
- 'Delivery and quality':[['Jenkins',1],['GitHub Actions',1],['SonarQube',1],['CodeQL',1],['Git / Bitbucket',1],['TDD',1],['Code review',1],['SAFe and Scrum',1]],
- 'Edge and monitoring':[['Cloudflare',1],['Akamai',1],['Grafana',1],['Prometheus',1],['OpenTelemetry',1],['JMeter',1]]
+ 'Languages':[['Java 17 / 21',1],['SQL',1],['PL/SQL',1],['Python',1],['Bash',1],['JavaScript'],['TypeScript','familiar'],['HTML / CSS']],
+ 'Backend and APIs':[['Spring Boot',1],['Spring Security',1],['Spring Data',1],['JPA / Hibernate',1],['REST',1],['OpenAPI 3.0',1],['Microservices',1],['SOAP',1],['Helidon',1]],
+ 'Events and messaging':[['Apache Kafka',1],['Confluent',1],['Google Pub/Sub',1],['Event-driven design',1],['Dead-letter routing',1],['Idempotent consumers',1]],
+ 'Architecture':[['SOA',1],['Reference architectures',1],['Design patterns',1],['Cloud-native design',1],['Data contracts',1],['ADRs',1],['Golden paths',1],['Guardrails',1]],
+ 'Cloud and platform':[['Google Cloud',1],['GKE / Anthos',1],['Kubernetes',1],['Docker',1],['Helm',1],['Terraform',1],['OpenShift',1],['Azure','transferable'],['AWS','transferable']],
+ 'Data':[['PostgreSQL',1],['Oracle 19c',1],['Redis',1],['Elasticsearch',1],['BigQuery',1],['Neo4j',1],['MySQL',1],['Partitioning',1],['Query tuning',1]],
+ 'Security and edge':[['OAuth2 / OIDC',1],['JWT',1],['RBAC',1],['VPC Service Controls',1],['Cloud Armor',1],['Cloudflare',1],['Akamai',1],['PCI-DSS awareness'],['GDPR awareness']],
+ 'Observability':[['Grafana',1],['Prometheus',1],['OpenTelemetry',1],['Root-cause analysis',1],['JMeter',1],['Superset',1],['Looker Studio',1]],
+ 'Quality and delivery':[['GitHub Actions',1],['Jenkins',1],['SonarQube',1],['CodeQL',1],['JUnit',1],['Integration testing',1],['TDD',1],['Contract-first review',1],['SAFe and Scrum',1]],
+ 'AI-native':[['Claude Code',1],['GitHub Copilot',1],['Vertex AI',1],['Gemini',1],['MCP servers',1],['React (working level)']]
 };
 
 var NFRS=[
- ['Performance','Fast by design, proven by test',['Load and stress testing with JMeter before release','CDN offload and edge caching','Query, index and cache strategy','Service-level targets agreed with the business']],
- ['Security','Defence in depth',['OAuth2, OIDC and JWT for identity','RBAC and least privilege','WAF and edge protection','Static analysis with CodeQL and SonarQube']],
- ['Scalability','Grow without redesign',['Stateless services on Kubernetes','Event-driven decoupling with Kafka and Pub/Sub','Horizontal scaling across clusters and regions','Right-sized, cost-aware capacity']],
- ['Resilience','Fail gracefully, recover fast',['Zero-downtime migration playbooks','Retry, timeout and idempotency patterns','Multi-cluster, multi-project topology','Rollback paths as a design requirement']],
- ['Observability','See it before users do',['Metrics with Prometheus and Grafana','Distributed tracing with OpenTelemetry','Actionable alerting tied to impact','Dashboards shared across teams']],
- ['Maintainability','Easy to change next year',['Contract-first APIs and clear boundaries','Spring Boot 2.5 to 3.3 modernisation','Quality gates in CI/CD','Decision records that explain why']]
+ ['Performance','Fast by design, proven by test',['Load and reliability testing with JMeter','CDN offload and edge caching','Partitioning, indexing and keyset pagination','Service-level targets agreed with the business']],
+ ['Security','Defence in depth',['OAuth2, OIDC and JWT for identity','RBAC and least privilege','Cloud Armor, WAF and VPC Service Controls','Static analysis with CodeQL and SonarQube']],
+ ['Scalability','Grow without redesign',['Stateless services on GKE and Anthos','Event-driven decoupling with Kafka and Pub/Sub','Infrastructure as code with Terraform and Helm','Right-sized, cost-aware capacity']],
+ ['Resilience','Fail gracefully, recover fast',['Zero-downtime migration playbooks','Dead-letter routing and idempotent consumers','Safe rollout and rollback','Multi-cluster, multi-project topology']],
+ ['Observability','See it before users do',['Metrics with Prometheus and Grafana','Tracing with OpenTelemetry','Produced-versus-consumed monitoring','Days to minutes time-to-detect']],
+ ['Maintainability','Easy to change next year',['Contract-first APIs and clear boundaries','Spring Boot 2.5 to 3.3 modernisation','Quality gates in CI/CD','ADRs and onboarding documentation']]
 ];
 
 var STEPS=[
- ['Discover','Understand the business problem before choosing technology.','I work with product owners and global stakeholders to turn goals into measurable requirements, constraints and success criteria. The output is a shared problem statement and a first list of non-functional requirements.',['Stakeholder interviews','Requirements','NFR baseline']],
- ['Design','Shape the solution and make it visible.','I produce architecture diagrams, reference architectures and API contracts. Options are compared against the NFRs, and trade-offs are written down so everyone sees the reasoning.',['C4-style diagrams','OpenAPI 3.0','Patterns','Options analysis']],
- ['Decide','Record the choice and the reason.','Each significant choice becomes a short decision record with context, alternatives and consequences. Software and hardware are evaluated with clear integration methods, which keeps later debate short.',['ADRs','Build vs buy','Evaluation criteria']],
- ['Prove','Build a prototype before committing the platform.','End-to-end proofs of concept de-risk new tools and technologies. I test performance and security assumptions early, when change is still cheap.',['PoC','JMeter','Security review']],
- ['Deliver','Land it with the teams that will own it.','I work alongside development teams, lead major code reviews, and enforce quality gates in the pipeline. I ensure the agreed architecture and infrastructure are what actually ships.',['Code review','CI/CD','Quality gates','Mentoring']],
- ['Govern','Keep it healthy in production.','Observability, incident ownership and continuous standards keep the platform aligned with the architecture. I own and resolve the hardest technical problems with internal and external teams.',['Observability','RCA','Standards','Cost review']]
+ ['Discover','Sit with product owners and question the requirements.','I gather and shape requirements with product owners, questioning and clarifying until the problem is clear. The output is a shared problem statement and a first list of non-functional requirements.',['Product owners','Requirements','NFR baseline']],
+ ['Design','Shape the solution and make it visible.','Architecture diagrams, reference architectures, schemas and API contracts. Options are compared against the NFRs and the trade-offs are written down.',['Diagrams','OpenAPI 3.0','Schema design','Patterns']],
+ ['Decide','Record the choice and the reason.','Each significant choice becomes a short decision record with context, alternatives and consequences. Cross-team data agreements are settled in honest trade-off conversations with system owners.',['ADRs','Data contracts','Build vs buy']],
+ ['Prove','Build a prototype before committing the platform.','End-to-end proofs of concept de-risk new tools and technology. A Confluent and Grafana monitoring PoC, for example, shaped how the whole estate is observed.',['PoC','JMeter','Security review']],
+ ['Deliver','Land it with the teams that will own it.','I write, review and merge production code daily, approve pull requests, and enforce SonarQube and CodeQL gates. Infrastructure ships as code through GitHub Actions, Terraform and Helm.',['Code review','CI/CD','Terraform','Mentoring']],
+ ['Govern','Keep it healthy in production.','Observability, root-cause analysis and continuous modernisation keep the platform aligned with the architecture, and technical debt stays low.',['Observability','RCA','Standards','Cost review']]
 ];
 
 var JOBS=[
- {t:'Senior Solution Architect',w:'August 2022 to Present',o:'Inter IKEA Digital, Älmhult, Sweden',cur:1,b:[
-  'Create and solution complex, enterprise-level services and frameworks, <strong>translating company needs into system specifications</strong> that development teams implement.',
-  'Design microservice, SOA and event-driven architectures: <strong>20+ Java Spring Boot services</strong>, REST and SOAP interfaces, and messaging over Kafka and Pub/Sub.',
-  'Built a reusable <strong>MCP (Model Context Protocol) framework</strong> that gives AI tooling real repository and system context, with a React interface for engineers.',
-  'Designed search and aggregation with Elasticsearch and Gemini AI, and a <strong>BigQuery analytical layer</strong> with reusable dashboards in Grafana, Superset and Looker Studio.',
-  'Architected a <strong>unified model for pricing and range data</strong>, removing duplicated integrations and giving teams one governed source of truth.',
-  'Led the <strong>Akamai to Cloudflare CDN migration across 10 domains</strong> with zero downtime, and the <strong>OpenShift to GCP (Anthos) re-platforming across 11 clusters and 6 projects</strong>.',
-  'Handle performance and security requirements: OAuth2, OIDC, JWT, RBAC, JMeter load testing, and observability with Grafana, Prometheus and OpenTelemetry.',
-  'Set up code-review processes and lead major technical reviews, enforcing quality gates with SonarQube, CodeQL and contract-first API review.',
-  'Drive innovation and standards: AI-augmented engineering, the <strong>Spring Boot 2.5 to 3.3</strong> modernisation, and cost optimisation, including an in-house service at <strong>100x lower cost</strong> and <strong>3,000+ labour hours saved per store annually</strong>.',
-  'Prepare diagrams, reference architectures and decision records, build prototypes and PoCs, manage global stakeholders, and mentor within the architect community.'
+ {t:'Solution Architect / Tech Lead',w:'August 2022 to Present',o:'Inter IKEA Digital, Älmhult, Sweden',cur:1,b:[
+  'Sole architect of a global, cloud-native GCP platform where <strong>more than 80% of the data arrives through integrations</strong>. Lead the technical direction and make the calls on implementation while staying hands-on.',
+  'Sit with product owners to gather and shape requirements, then turn them into designs, architecture and engineering work the team can build against.',
+  'Lead cross-team data-integration discussions: <strong>schema reviews and data-sharing agreements</strong> with system owners that get clean, reliable data flowing.',
+  'Build and own <strong>20+ Java Spring Boot microservices</strong> and the middleware behind the front end: REST (OpenAPI 3.0), Spring Security, JPA and Hibernate, with Kafka and Pub/Sub messaging.',
+  'Design event-driven architecture with <strong>dead-letter routing, idempotent consumers and produced-versus-consumed monitoring</strong>.',
+  'Restructured a <strong>130GB PostgreSQL table</strong> with list partitioning and a keyset-pagination backfill, with zero downtime. Designed Elasticsearch and Gemini AI search and aggregation.',
+  'Led the <strong>OpenShift to GCP Orbit (Anthos)</strong> migration across 11 clusters and 6 projects in EU, US and Asia, and the <strong>Akamai to Cloudflare</strong> migration across 10 domains, both with zero downtime and everything as code in Terraform, Helm and RBAC.',
+  'Defined reference architectures, guardrails and golden paths, and built reusable ROI, observability and service-health dashboards that common teams adopted instead of building their own.',
+  'Created a unified model for pricing and range data, giving teams one governed source of truth.',
+  'Hardened security with OAuth2, OIDC, JWT, RBAC, VPC Service Controls and Cloud Armor. Standardised monitoring after a silent data-loss incident, cutting <strong>time-to-detect from days to minutes</strong>.',
+  'Write, review and merge production code daily, approve pull requests, and enforce SonarQube, CodeQL and contract-first API review. Build CI/CD in GitHub Actions and all infrastructure in Terraform.',
+  'Drive modernisation: the <strong>Spring Boot 2.5 to 3.3</strong> migration and AI-native engineering with Claude Code, Copilot, Vertex AI and MCP servers in the developer framework.',
+  'Deliver cost optimisation through architecture: an in-house QR service at <strong>100x lower cost</strong> than the licensed tool, serverless right-sizing, and a rendering pipeline saving <strong>3,000+ labour hours per store every year</strong>.',
+  'Mentor engineers, run design reviews, write ADRs and onboarding material, and represent the platform in cross-team technical forums.'
  ]},
  {t:'Senior Software Engineer',w:'December 2019 to July 2022',o:'Tata Consultancy Services, Älmhult, Sweden',b:[
-  'Designed and built high-performing core modules of a mission-critical enterprise system in Java, J2EE and Spring Boot.',
-  'Developed REST and SOAP services from design to production with unit and integration tests, practising TDD within CI.',
+  'Designed and built core modules of a mission-critical IKEA enterprise system in Java and Spring Boot, lifting reliability and throughput.',
+  'Developed REST APIs and backend services from design to production with unit and integration tests.',
   'Built system integrations with careful data mapping, transformation and error handling, and resolved complex production issues hands-on.',
   'Mentored junior engineers through code reviews, raising the quality bar and delivery rate.'
  ]},
  {t:'Technical Lead',w:'April 2017 to November 2019',o:'Tata Consultancy Services, Älmhult, Sweden',b:[
-  'Led an in-house and offshore development team through the full delivery lifecycle, owning architecture, code quality and delivery.',
-  'Set coding standards and design patterns, ran design and code reviews, and unblocked developers on hard problems.',
-  'Acted as primary client technical contact, and managed Control-M batch scheduling to protect downstream SLAs.'
+  'Led an in-house and offshore development team through the full delivery lifecycle, owning code quality and delivery while staying hands-on.',
+  'Set coding standards and the technical approach, ran design and code reviews, and unblocked developers on hard problems.',
+  'Primary client technical contact, translating requirements into architecture. Managed Control-M batch scheduling to protect downstream SLAs.'
  ]},
  {t:'Senior Developer',w:'June 2014 to March 2017',o:'Tata Consultancy Services, Chennai, India',b:[
-  'Delivered enhancement projects across system integrations, process streamlining and data lineage in Java.',
+  'Delivered enhancement projects across system integrations, process streamlining and data lineage.',
   'Led code reviews and mentored developers to keep a growing codebase consistent.'
  ]},
  {t:'Developer',w:'June 2011 to May 2014',o:'Tata Consultancy Services, Chennai, India',b:[
-  'Built product features with Java, J2EE, Informix 4GL, PL/SQL, Oracle and shell scripting on Unix.',
+  'Built product features with Java, Informix 4GL, PL/SQL, Oracle and shell scripting on Unix.',
   'Resolved production incidents within SLA and kept live batch systems running reliably.'
  ]}
 ];
 
-var MARQUEE=['Solution Architecture','Enterprise Architecture','Microservices','SOA','Event-Driven Design','Google Cloud','Kubernetes','Anthos','Terraform','Spring Boot','Java 21','Kafka','Pub/Sub','Elasticsearch','BigQuery','OpenAPI 3.0','OAuth2 / OIDC','Cloudflare','Grafana','OpenTelemetry','MCP','Vertex AI','SAFe'];
-var ROLES=['Senior Solution Architect','Google Cloud Certified Professional Cloud Architect','Enterprise and cloud-native architecture','Hands-on technologist who still writes code'];
+var LENSES=[
+ ['Solution Architect','Turning a complex landscape into clear, reusable and scalable foundations.','Defines reference architectures, patterns and roadmaps, partners with product owners on requirements, and leads cross-team data-integration and schema agreements. Proves new ideas with end-to-end PoCs before committing the platform.',['Reference architectures','Roadmaps','Data contracts','PoC and evaluation','Cloud-native on GCP','Cost optimisation','Platform modernisation','Cross-team coordination'],['Sole architect of a global GCP platform','Led 11-cluster Anthos and 10-domain CDN migrations','Unified pricing and range data model']],
+ ['Tech Lead','Greater technical responsibility without ever leaving the code.','Leads the technical direction of a business-critical platform while writing, reviewing and shipping code every day. Facilitates technical decisions, drives technical debt down and is the person others turn to when a problem is genuinely hard.',['Hands-on Java','Spring Boot and Security','Kafka event-driven design','PostgreSQL and modelling','Distributed systems','Testing and quality gates','Mentoring','Facilitating decisions'],['Owns 20+ Spring Boot microservices','Reviews and merges production code daily','Spring Boot 2.5 to 3.3 migration']],
+ ['Platform and Cloud','Connecting product-team needs with enterprise cloud and infrastructure services.','Defines guardrails and golden paths, then builds the automation, CI/CD and infrastructure as code that makes them real. Strong across identity, networking, security, observability, data, APIs, containers, integration and cost.',['Golden paths','Internal developer platform','Identity and access','Networking and security','Terraform and CI/CD','Kubernetes, GKE, Anthos','Observability and SRE metrics','ADRs and enablement'],['Reusable dashboards adopted by common teams','Cloud Armor and VPC Service Controls','Days to minutes time-to-detect']]
+];
+var LEAD=[
+ ['🤫','Quiet leadership','Remove the friction, make the design decision clear, and let the team do its best work.'],
+ ['⌨','Grounded in the code','Decisions stay rooted in reality because I write, review and ship code every day.'],
+ ['🗣','Facilitate and escalate','Run design discussions, reach consensus across differing opinions, and escalate technical risk early.'],
+ ['🧹','Drive debt down','Modernise proactively, before technical debt becomes someone else\'s problem.'],
+ ['🧗','The hard problems','Be the person colleagues come to when something is genuinely difficult, and get into the code with them.'],
+ ['🤝','Honest about range','Deepest in backend and architecture. Comfortable across the stack with React, and glad to deepen it further.']
+];
+var MARQUEE=['Solution Architecture','Enterprise Architecture','Microservices','SOA','Event-Driven Design','Tech Leadership','Google Cloud','Kubernetes','Anthos','Terraform','Spring Boot','Java 21','Kafka','Pub/Sub','Elasticsearch','BigQuery','OpenAPI 3.0','OAuth2 / OIDC','Cloudflare','Grafana','OpenTelemetry','MCP','Vertex AI','SAFe'];
+var ROLES=['Solution Architect and Tech Lead','Google Cloud Certified Professional Cloud Architect','Hands-on Java and Spring Boot engineer','Event-driven systems, platforms and AI-native delivery'];
 
 /* ===== BUILD UI ===== */
 $('#yr').textContent=new Date().getFullYear();
@@ -609,6 +761,17 @@ $('#caps').innerHTML=CAPS.map(function(c,i){
   return '<div class="card cap reveal" style="--d:'+((i%3)*.08)+'s"><div class="ic">'+c[0]+'</div><h3>'+c[1]+'</h3><p>'+c[2]+'</p><div class="tags">'+c[3].map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div>';
 }).join('');
 
+$('#lead').innerHTML=LEAD.map(function(l,i){return '<div class="card lead-card reveal" style="--d:'+((i%3)*.08)+'s"><span class="ic">'+l[0]+'</span><h3>'+l[1]+'</h3><p>'+l[2]+'</p></div>'}).join('');
+
+(function(){
+  var tabs=$('#ltabs'),box=$('#lens');
+  tabs.innerHTML=LENSES.map(function(l,i){return '<button class="tab'+(i?'':' on')+'" role="tab" data-i="'+i+'">'+l[0]+'</button>'}).join('');
+  function show(i){var l=LENSES[i];
+    box.innerHTML='<h3>'+l[0]+'</h3><p class="lead">'+l[1]+'</p><p style="color:var(--tx2);max-width:820px">'+l[2]+'</p><div class="cols"><div><h4>Core competencies</h4><div class="tags" style="margin-top:0">'+l[3].map(function(t){return '<span class="tag">'+t+'</span>'}).join('')+'</div></div><div><h4>Proof points</h4><ul>'+l[4].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul></div></div>';}
+  tabs.addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;$$('.tab',tabs).forEach(function(x){x.classList.toggle('on',x===b)});show(+b.dataset.i)});
+  show(0);
+})();
+
 $('#adrs').innerHTML=ADRS.map(function(a,i){
   return '<article class="card adr reveal" style="--d:'+((i%2)*.08)+'s"><div class="top"><span class="no">'+a[0]+'</span><span class="pill '+a[6]+'">'+a[1]+'</span></div><h3>'+a[2]+'</h3><dl><div><dt>Context</dt><dd>'+a[3]+'</dd></div><div><dt>Decision</dt><dd>'+a[4]+'</dd></div></dl><div class="out">'+a[5]+'</div></article>';
 }).join('');
@@ -617,8 +780,8 @@ $('#nfrs').innerHTML=NFRS.map(function(n,i){
   return '<div class="card nfr reveal" style="--d:'+((i%3)*.08)+'s"><div class="head"><svg class="ring" viewBox="0 0 54 54"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c8dff"/><stop offset="1" stop-color="#2fd18b"/></linearGradient></defs><circle class="bg" cx="27" cy="27" r="24"/><circle class="fg" cx="27" cy="27" r="24" transform="rotate(-90 27 27)"/></svg><div><h3>'+n[0]+'</h3><div class="mono" style="font-size:11.5px;color:var(--tx3)">'+n[1]+'</div></div></div><ul>'+n[2].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>';
 }).join('');
 
-$('#tl').innerHTML=JOBS.map(function(j){
-  return '<article class="card job reveal'+(j.cur?' cur':'')+'"><div class="meta"><h3>'+j.t+'</h3><span class="when">'+j.w+'</span></div><div class="org">'+j.o+'</div><ul>'+j.b.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></article>';
+$('#tl').innerHTML=JOBS.map(function(j,k){
+  return '<article class="card job reveal'+(j.cur?' cur':'')+'"><span class="n">'+(k+1)+'</span><div class="meta"><h3>'+j.t+'</h3><span class="when">'+j.w+'</span></div><div class="org">'+j.o+'</div><ul>'+j.b.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></article>';
 }).join('');
 
 /* skills tabs */
@@ -658,7 +821,7 @@ $('#tl').innerHTML=JOBS.map(function(j){
   NODES.forEach(function(n){N[n.id]=n});
   var h='<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--tx3)"/></marker></defs>';
   h+='<rect class="zone" x="360" y="40" width="300" height="320" rx="20"/>';
-  h+='<text class="lbl" x="376" y="62">KUBERNETES ON GCP (ANTHOS), 11 CLUSTERS</text>';
+  h+='<text class="lbl" x="376" y="62">GKE / ANTHOS, 11 CLUSTERS, TERRAFORM + HELM</text>';
   h+='<text class="lbl" x="690" y="58">DATA AND INTELLIGENCE</text>';
   EDGES.forEach(function(e,i){
     h+='<path class="edge" id="e'+i+'" d="'+e[2]+'" marker-end="url(#ar)"/>';
@@ -669,7 +832,7 @@ $('#tl').innerHTML=JOBS.map(function(j){
      +'<text x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2-(n.h>70?4:0))+'" text-anchor="middle">'+esc(n.t)+'</text>'
      +'<text class="s" x="'+(n.x+n.w/2)+'" y="'+(n.y+n.h/2+(n.h>70?14:15))+'" text-anchor="middle">'+esc(n.s)+'</text></g>';
   });
-  h+='<g class="band"><rect x="14" y="398" width="972" height="40"/><text x="500" y="422" text-anchor="middle">SECURITY: OAuth2 / OIDC / JWT  ·  RBAC  ·  WAF  ·  GDPR and PCI-DSS aware design</text></g>';
+  h+='<g class="band"><rect x="14" y="398" width="972" height="40"/><text x="500" y="422" text-anchor="middle">SECURITY: OAuth2 / OIDC / JWT  ·  RBAC  ·  Cloud Armor  ·  VPC Service Controls  ·  GDPR and PCI-DSS aware</text></g>';
   h+='<g class="band"><rect x="14" y="448" width="972" height="40"/><text x="500" y="472" text-anchor="middle">OBSERVABILITY: Prometheus  ·  Grafana  ·  OpenTelemetry  ·  JMeter load and reliability testing</text></g>';
   svg.innerHTML=h;
   if(!RM){
@@ -703,6 +866,15 @@ $('#tl').innerHTML=JOBS.map(function(j){
   });
 })();
 
+// dropdown + to top
+(function(){
+  var dd=$('.dd'),b=$('#more');
+  b.addEventListener('click',function(e){e.stopPropagation();var o=dd.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  document.addEventListener('click',function(){dd.classList.remove('open');b.setAttribute('aria-expanded','false')});
+  $$('.dd-menu a').forEach(function(a){a.addEventListener('click',function(){dd.classList.remove('open')})});
+  var t=$('#totop');t.addEventListener('click',function(){scrollTo({top:0,behavior:RM?'auto':'smooth'})});
+  addEventListener('scroll',function(){t.classList.toggle('show',scrollY>700)},{passive:true});
+})();
 // menu
 $('#burger').addEventListener('click',function(){$('#menu').classList.toggle('open')});
 $$('#menu a').forEach(function(a){a.addEventListener('click',function(){$('#menu').classList.remove('open')})});
@@ -716,8 +888,8 @@ $$('.reveal').forEach(function(el){io.observe(el)});
 
 function count(el){
   var to=+el.dataset.count,suf=el.dataset.suf||'',t0=null,dur=1600;
-  if(RM){el.textContent=to+suf;return}
-  function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=v+suf;if(p<1)requestAnimationFrame(f)}
+  if(RM){el.textContent=to.toLocaleString('en-US')+suf;return}
+  function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('en-US')+suf;if(p<1)requestAnimationFrame(f)}
   requestAnimationFrame(f);
 }
 var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);cio.unobserve(e.target)}})},{threshold:.5});
